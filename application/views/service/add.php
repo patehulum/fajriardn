@@ -61,9 +61,8 @@
                               class="required">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" name="kd_barang[]" id="kd_barang1" alt="1" required="required"
-                          class="form-control col-md-7 col-xs-12">
-                        </div>
+                        <input type="text" name="kd_barang[]" id="kd_barang1" alt="1" required="required" class="form-control col-md-7 col-xs-12">
+                      </div>
                   </div>
 
                   <div class="form-group rec-element">
@@ -75,7 +74,6 @@
                       </div>
                   </div>
                   
-
                   <div class="ln_solid"></div>
                   <div id="nextkolom" name="nextkolom"></div>
                   <button type="button" id="jumlahkolom" value="1" style="display:none"></button>
@@ -89,7 +87,6 @@
                           <button type="submit" class="btn btn-success">Simpan</button>
                       </div>
                   </div>
-
 
                   <!-- <div class="form-group">
                       <label class="col-sm-2 control-label">Nama Barang</label>
@@ -169,7 +166,7 @@
                   '</label>' +
                   '<div class="col-md-9 col-sm-9 col-xs-12"> ' +
                   '<div class="input-group">' +
-                  '<input type="text" name="qty" id="qty'+i+'" alt="'+i+'" class="form-control">' +
+                  '<input type="text" name="qty" id="qty[]'+i+'" alt="'+i+'" class="form-control">' +
                   '<span class="input-group-btn">' +
                   '<button type="button" class="btn btn-warning del-element"><i class="fa fa-minus-square"></i> Hapus</button>' +
                   '</span>' +

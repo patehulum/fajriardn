@@ -83,7 +83,7 @@
                 $data = array(
                         'no_plat'		=> $this->input->post('no_plat'),
                         'tanggal'	    => $this->input->post('tanggal'),
-                        'kd_barang' 	=> $this->input->post('kd_service')[$i],
+                        'kd_barang' 	=> $this->input->post('kd_barang')[$i],
                         'qty' 	        => $this->input->post('qty')[$i],
                         'total' 	    => $total,
                     );
