@@ -1,5 +1,5 @@
 <?php
-	class mekanik extends CI_Controller
+	class Mekanik extends CI_Controller
 	{
 		function __construct()
 		{
