@@ -185,7 +185,7 @@
     <div class="pull-right hidden-xs">
       <a href="https://adminlte.io"><b>AdminLTE</b> V2</a>
     </div>
-    <strong>SKRIPSI Yunita Rustania | Sistem Informasi Akademik SMA Adi Luhur Jakarta</strong>
+    <strong>SKRIPSI FAJRI ARDIYAN | Sistem Informasi Bengkel Motor Di Zicspee</strong>
   </footer>
       <!-- Control Sidebar 
       <aside class="control-sidebar control-sidebar-dark">
