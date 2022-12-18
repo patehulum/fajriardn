@@ -88,7 +88,7 @@
 				$this->db->where('id', $id_menu);
 				$this->db->delete('tabel_menu');
 			}
-			redirect('user');
+			redirect('menu');
 		}
 
 	}

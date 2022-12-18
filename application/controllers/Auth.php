@@ -6,6 +6,9 @@
 		function __construct()
 		{
 			parent::__construct();
+			if( !empty($this->session->userdata('username'))){
+				redirect(base_url("tampilan_utama"));
+			}
 			$this->load->library('session');
 			$this->load->model('model_user');
 			// $this->load->model('model_guru');
