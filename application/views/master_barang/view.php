@@ -18,6 +18,7 @@
                 <thead>
                     <tr>
                         <th>NO</th>
+                        <th>FOTO</th>
                         <th>KODE BARANG</th>
                         <th>NAMA BARANG</th>
                         <th>HARGA BARANG</th>
@@ -53,6 +54,10 @@
                         width: '50px',
                         class: 'text-center',
                         orderable: false,
+                    },
+                    { 
+                        "data": "foto",
+                        "class": "text-center"
                     },
                     {
                         data: 'kd_barang',

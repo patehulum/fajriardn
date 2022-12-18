@@ -17,6 +17,12 @@
 			$primaryKey = 'kd_barang';
 			// list field yang mau ditampilkan
 			$columns    = array(
+				array('db' => 'foto', 
+					  'dt' => 'foto',
+					  'formatter' => function($d) {
+					  		return "<img width='20px' src='".base_url()."uploads/user/barang/".$d."'>";
+					  }
+				),
 				//tabel db(kolom di database) => dt(nama datatable di view)
 				array('db' => 'kd_barang', 'dt' => 'kd_barang'),
 		        array('db' => 'nama_barang', 'dt' => 'nama_barang'),
@@ -53,7 +59,8 @@
 		function add()
 		{
 			if (isset($_POST['submit'])) {
-				$this->model_master_barang->save();
+				$uploadFoto = $this->upload_foto_barang();
+				$this->model_master_barang->save($uploadFoto);
 				redirect('master_barang');
 			} else {
 				$this->template->load('template', 'master_barang/add');
@@ -63,13 +70,28 @@
 		function edit()
 		{
 			if (isset($_POST['submit'])) {
-				$this->model_master_barang->update();
+				$uploadFoto = $this->upload_foto_barang();
+				$this->model_master_barang->update($uploadFoto);
 				redirect('master_barang');
 			} else {
 				$kd_barang 		= $this->uri->segment(3);
 				$data['master_barang'] 	= $this->db->get_where('tbl_master_barang', array('kd_barang' => $kd_barang))->row_array();
 				$this->template->load('template', 'master_barang/edit', $data);
 			}
+		}
+
+		function upload_foto_barang()
+		{
+			//validasi foto yang di upload
+			$config['upload_path']          = './uploads/user/barang/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 1024;
+            $this->load->library('upload', $config);
+
+            //proses upload
+            $this->upload->do_upload('userfile');
+            $upload = $this->upload->data();
+            return $upload['file_name'];
 		}
 
 		function delete()

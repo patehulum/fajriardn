@@ -45,6 +45,15 @@
                         <input type="text" value="<?php echo $master_barang['harga_jual']; ?>" name="harga_jual" class="form-control" placeholder="Masukkan Harga Barang">
                       </div>
                   </div>
+                  
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Gambar Barang</label>
+
+                      <div class="col-sm-5">
+                        <input type="file" name="userfile">
+                        <img src="<?php echo base_url()."/uploads/user/barang/".$master_barang['foto']; ?>" width="150px">
+                      </div>
+                  </div>
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label"></label>

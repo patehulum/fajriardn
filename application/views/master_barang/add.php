@@ -9,7 +9,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <?php
-                echo form_open('master_barang/add', 'role="form" class="form-horizontal"');
+                echo form_open_multipart('master_barang/add', 'role="form" class="form-horizontal"');
             ?>
 
                 <div class="box-body">
@@ -43,6 +43,14 @@
 
                       <div class="col-sm-9">
                         <input type="text" name="harga_jual" class="form-control" placeholder="Masukkan Harga Jual Barang">
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Gambar Barang</label>
+
+                      <div class="col-sm-5">
+                        <input type="file" name="userfile">
                       </div>
                   </div>
 
