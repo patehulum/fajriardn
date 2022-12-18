@@ -9,16 +9,16 @@
             <!-- /.box-header -->
             <!-- form start -->
             <?php
-                echo form_open('income/add', 'role="form" class="form-horizontal"');
+                echo form_open('income/simpan', 'role="form" class="form-horizontal"');
             ?>
 
-                <div class="box-body">                  
+                <div class="box-body">
                   <div class="form-group">
                       <label class="col-sm-2 control-label">No. Plat kendaraan</label>
 
                       <div class="col-sm-9">
                         <?php
-                          echo cmb_dinamis('no_plat', 'tbl_customer', 'no_plat', 'id_customer');
+                          echo cmb_dinamis('no_plat', 'tbl_customer', 'no_plat', 'no_plat');
                         ?>
                       </div>
                   </div>
@@ -28,47 +28,64 @@
                       <label class="col-sm-2 control-label">Tanggal Service</label>
 
                       <div class="col-sm-9">
-                        <!-- <input type="date" name="date1" max=
-                        <?php echo date('Y-m-d', strtotime(2006));
-                        ?>
-                        > -->
-                        <input type='text' class="form-control" name='tanggal ' placeholder='Tanggal / Bulan / Tahun' name="tanggal_lahir">
+                        <input type='text' name="tanggal" class="form-control" placeholder="Tahun / Bulan / Tanggal">
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Jasa Service</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" name="kd_service" class="form-control" placeholder="Masukkan kode jasa service">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Keterangan Jasa Service</label>
+
+                      <div class="col-sm-9">
+                        <textarea rows="10" cols="30" name="keterangan" class="form-control" placeholder="keterangan jasa service"></textarea>
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Biaya Jasa Service</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" name="biaya_service" class="form-control" placeholder="Masukkan biaya jasa service">
                       </div>
                   </div>
 
                   <div class="form-group rec-element">
-                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama <span
+                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Barang<span
                               class="required">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" name="nama[]" id="nama1" alt="1" required="required"
-                              class="form-control col-md-7 col-xs-12">
-                      </div>
+                        <input type="text" name="kd_barang[]" id="kd_barang1" alt="1" required="required"
+                          class="form-control col-md-7 col-xs-12">
+                        </div>
                   </div>
-                  <div class="form-group">
-                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Pekerjaan <span
-                              class="required">*</span>
+
+                  <div class="form-group rec-element">
+                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Jumlah Barang<span
+                        class="required">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" name="pekerjaan[]" id="pekerjaan1" alt="1" required="required"
-                              class="form-control col-md-7 col-xs-12">
+                        <input type="text" name="qty[]" id="qty1" alt="1" required="required" class="form-control col-md-7 col-xs-12">
                       </div>
                   </div>
-                  <div class="form-group">
-                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Alamat <span
-                              class="required">*</span>
-                      </label>
-                      <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" name="alamat[]" id="alamat1" alt="1" required="required"
-                              class="form-control col-md-7 col-xs-12">
-                      </div>
-                  </div>
+                  
+
                   <div class="ln_solid"></div>
                   <div id="nextkolom" name="nextkolom"></div>
                   <button type="button" id="jumlahkolom" value="1" style="display:none"></button>
                   <div class="form-group">
-                      <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button type="button" class="btn btn-info tambah-form">Tambah Form</button>
+                      <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-2">
+                          <button type="button" class="btn btn-info tambah-form">Tambah Data</button>
+
+                          <?php
+                            echo anchor('income', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
+                          ?>
                           <button type="submit" class="btn btn-success">Simpan</button>
                       </div>
                   </div>
@@ -137,29 +154,25 @@
         var i = 2;
         $(".tambah-form").on('click', function () {
             row = '<div class="rec-element">' +
+            
                 '<div class="form-group">' +
-                '<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama ' + i + ' <span class="required">*</span>' +
-                '</label>' +
-                '<div class="col-md-9 col-sm-9 col-xs-12">' +
-                '<input type="text" name="nama[]" id="nama' + i + '" alt="' + i + '" required="required" class="form-control col-md-7 col-xs-12">' +
+                  '<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Barang ' + i + ' <span class="required">*</span>' +
+                  '</label>' +
+                  '<div class="col-md-9 col-sm-9 col-xs-12">' +
+                  '<input type="text" name="kd_barang[]" id="kd_barang'+i+'" alt="' +i+'" required="required" class="form-control col-md-7 col-xs-12">' +
+                  '</div>' +
+                  '</div>' +
                 '</div>' +
-                '</div>' +
+
                 '<div class="form-group">' +
-                '<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Pekerjaan ' + i + '<span class="required">*</span>' +
-                '</label>' +
-                '<div class="col-md-9 col-sm-9 col-xs-12">' +
-                '<input type="text" name="pekerjaan[]" id="pekerjaan' + i + '" alt="' + i + '" required="required" class="form-control col-md-7 col-xs-12">' +
-                '</div>' +
-                '</div>' +
-                '<div class="form-group">' +
-                '<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Alamat ' + i + ' <span class="required">*</span>' +
-                '</label>' +
-                '<div class="col-md-9 col-sm-9 col-xs-12"> ' +
-                '<div class="input-group">' +
-                '<input type="text" name="alamat" id="alamat' + i + '" alt="' + i + '" class="form-control">' +
-                '<span class="input-group-btn">' +
-                '<button type="button" class="btn btn-warning del-element"><i class="fa fa-minus-square"></i> Hapus</button>' +
-                '</span>' +
+                  '<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Jumlah Barang ' + i + ' <span class="required">*</span>' +
+                  '</label>' +
+                  '<div class="col-md-9 col-sm-9 col-xs-12"> ' +
+                  '<div class="input-group">' +
+                  '<input type="text" name="qty" id="qty'+i+'" alt="'+i+'" class="form-control">' +
+                  '<span class="input-group-btn">' +
+                  '<button type="button" class="btn btn-warning del-element"><i class="fa fa-minus-square"></i> Hapus</button>' +
+                  '</span>' +
                 '</div>' +
                 '</div>' +
                 '</div>' +

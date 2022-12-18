@@ -23,9 +23,9 @@
 		        array('db' => 'no_plat', 'dt' => 'no_plat'),
 		        array('db' => 'tanggal', 'dt' => 'tanggal'),
 		        array('db' => 'kd_barang', 'dt' => 'kd_barang'),
-		        array('db' => 'harga', 'dt' => 'harga'),
 		        array('db' => 'qty', 'dt' => 'qty'),
 		        array('db' => 'total', 'dt' => 'total'),
+		        array('db' => 'keterangan', 'dt' => 'keterangan'),
 		        //untuk menampilkan aksi(edit/delete dengan parameter kode mekanik)
 		        array(
 						'db' => 'id_service',
@@ -61,6 +61,36 @@
 				$this->template->load('template', 'service/add');
 			}
 		}
+        
+        public function simpan()
+        {
+			$data = array(
+				//tabel di database => name di form
+				'no_plat'		=> $this->input->post('no_plat'),
+				'tanggal'	    => $this->input->post('tanggal'),
+				'kd_barang' 	=> $this->input->post('kd_service'),
+				'qty' 	        => 1,
+				'total' 	    => $this->input->post('biaya_service'),
+				'keterangan' 	=> $this->input->post('keterangan'),
+			);
+			$this->db->insert("tbl_service",$data);
+            
+            $jumlah = count($this->input->post('kd_barang'));
+            //print_r($jumlah);die();
+            for($i=0;$i<$jumlah;$i++){
+
+                $total = 10000;
+                $data = array(
+                        'no_plat'		=> $this->input->post('no_plat'),
+                        'tanggal'	    => $this->input->post('tanggal'),
+                        'kd_barang' 	=> $this->input->post('kd_service')[$i],
+                        'qty' 	        => $this->input->post('qty')[$i],
+                        'total' 	    => $total,
+                    );
+                $this->db->insert("tbl_service",$data);
+            }
+            redirect('income');
+        } 
 
 		// function edit()
 		// {

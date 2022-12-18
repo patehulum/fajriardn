@@ -53,7 +53,7 @@
                         orderable: false,
                     },
                     {
-                        data: 'no_plat.nama_pelanggan',
+                        data: 'no_plat',
                         width: '150px',
                         class: 'text-center'
                     },
