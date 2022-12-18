@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Skripsi Yunita</title>
+  <title>AdminLTE 2 | Skripsi Fajri Ardiyan</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -27,15 +27,15 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body style = "background-image : url('assets/dist/img/back.jpg'); background-size: 100;">
+<body style = "background-image : url('https://i.imgur.com/HgflTDf.jpg'); backgroud-size: 100%;">
 
   <div class="login-box">
-      <div class="login-logo">
-        <a href="#"><b>SIAK</b> SMA ADI LUHUR</a>
-      </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
-
+        
+      <div class="login-logo">
+        <a href="#"><b>Bengkel Motor</b> Zicspeed</a>
+      </div>
         <?php echo form_open('auth/check_login'); ?>
 
             <div class="form-group has-feedback">
