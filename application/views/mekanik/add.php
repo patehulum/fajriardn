@@ -4,54 +4,53 @@
 
           <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Form Edit Master Barang</h3>
+                <h3 class="box-title">Form Tambah Master Barang</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <?php
-                echo form_open_multipart('master_barang/edit', 'role="form" class="form-horizontal"');
+                echo form_open_multipart('mekanik/add', 'role="form" class="form-horizontal"');
             ?>
 
                 <div class="box-body">
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Kode Barang</label>
+                      <label class="col-sm-2 control-label">Nama Mekanik</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $master_barang['kd_barang']; ?>" readonly="true" name="kd_barang" class="form-control" placeholder="Masukkan Kode barang">
+                        <input type="text" name="nama_mekanik" class="form-control" placeholder="Masukkan nama mekanik">
                       </div>
                   </div>
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Nama barang</label>
+                      <label class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $master_barang['nama_barang']; ?>" name="nama_barang" class="form-control" placeholder="Masukkan Nama Barang">
+                        <input type="text" name="bod" class="form-control" placeholder="Masukkan Tempat, tanggal lahir">
                       </div>
                   </div>
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Harga barang</label>
+                      <label class="col-sm-2 control-label">No. Telp</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $master_barang['harga_barang']; ?>" name="harga_barang" class="form-control" placeholder="Masukkan Harga Barang">
+                        <input type="text" name="telp" class="form-control" placeholder="Masukkan No. Telp">
                       </div>
                   </div>
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Harga Jual</label>
+                      <label class="col-sm-2 control-label">Alamat</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $master_barang['harga_jual']; ?>" name="harga_jual" class="form-control" placeholder="Masukkan Harga Barang">
+                        <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat Mekanik">
                       </div>
                   </div>
                   
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Gambar Barang</label>
+                      <label class="col-sm-2 control-label">Foto</label>
 
                       <div class="col-sm-5">
                         <input type="file" name="userfile">
-                        <img src="<?php echo base_url()."/uploads/user/barang/".$master_barang['foto']; ?>" width="150px">
                       </div>
                   </div>
 
@@ -64,7 +63,7 @@
 
                       <div class="col-sm-1">
                         <?php
-                          echo anchor('master_barang', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
+                          echo anchor('mekanik', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
                         ?>
                       </div>
                   </div>

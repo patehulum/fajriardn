@@ -23,9 +23,9 @@
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3><?php echo $siswa['hasil']; ?></h3>
+                  <h3><?php echo $info['nama_bengkel']; ?></h3>
 
-                  <p>Siswa</p>
+                  <p>Nama Bengkel</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-users"></i>
@@ -37,34 +37,36 @@
 
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-green">
+              <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3><?php echo $guru['hasil']; ?></h3>
+                  <h3> <?php echo $info['alamat']; ?></h3>
 
-                  <p>Guru</p>
+                  <p>Alamat</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-user-circle"></i>
+                  <i class="fa fa-usd"></i>
                 </div>
-                <!--a href="<?php echo site_url('guru') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a-->
+                <!--a href="<?php echo site_url('siswa') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a-->
               </div>
             </div>
             <!-- ./col -->
 
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-yellow">
+              <div class="small-box bg-green">
                 <div class="inner">
-                  <h3><?php echo $ruangan['hasil']; ?></h3>
+                  <h3>Rp. <?php echo $info['saldo']; ?></h3>
 
-                  <p>Ruangan Kelas</p>
+                  <p>Saldo</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-building"></i>
+                  <i class="fa fa-usd"></i>
                 </div>
-                <!--a href="<?php echo site_url('ruangan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a-->
+                <!--a href="<?php echo site_url('siswa') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a-->
               </div>
             </div>
+            <!-- ./col -->
+
             <!-- ./col -->
 
       </div>
