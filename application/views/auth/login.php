@@ -27,7 +27,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body style = "background-image : url('https://i.imgur.com/HgflTDf.jpg'); background-size: 100;">
+<body style = "background-image : url('https://i.imgur.com/HgflTDf.jpg');backgroud-size: 100%;">
 
   <div class="login-box">
       <div class="login-logo">
