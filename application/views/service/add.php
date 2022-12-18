@@ -14,6 +14,14 @@
 
                 <div class="box-body">
                   <div class="form-group">
+                      <label class="col-sm-2 control-label">No. Invoice</label>
+
+                      <div class="col-sm-9">
+                        <input type='text' name="no_invoice" value="INV-<?php echo $hellow; ?>" class="form-control" readonly>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
                       <label class="col-sm-2 control-label">No. Plat kendaraan</label>
 
                       <div class="col-sm-9">
@@ -22,7 +30,6 @@
                         ?>
                       </div>
                   </div>
-
                   
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Tanggal Service</label>
@@ -33,7 +40,7 @@
                   </div>
                   
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Jasa Service</label>
+                      <label class="col-sm-2 control-label">Kode Jasa Service</label>
 
                       <div class="col-sm-9">
                         <input type="text" name="kd_service" class="form-control" placeholder="Masukkan kode jasa service">
@@ -166,7 +173,7 @@
                   '</label>' +
                   '<div class="col-md-9 col-sm-9 col-xs-12"> ' +
                   '<div class="input-group">' +
-                  '<input type="text" name="qty" id="qty[]'+i+'" alt="'+i+'" class="form-control">' +
+                  '<input type="text" name="qty[]" id="qty'+i+'" alt="'+i+'" class="form-control">' +
                   '<span class="input-group-btn">' +
                   '<button type="button" class="btn btn-warning del-element"><i class="fa fa-minus-square"></i> Hapus</button>' +
                   '</span>' +

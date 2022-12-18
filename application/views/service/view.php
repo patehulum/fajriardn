@@ -18,8 +18,11 @@
                 <thead>
                     <tr>
                         <th>NO</th>
+                        <th>N0. INVOICE</th>
                         <th>NAMA PELANGAN</th>
                         <th>TANGGAL SERVICE</th>
+                        <th>NAMA BARANG</th>
+                        <th>QTY</th>
                         <th>TOTAL HARGA</th>
                         <th>AKSI</th>
                     </tr>
@@ -53,12 +56,27 @@
                         orderable: false,
                     },
                     {
-                        data: 'no_plat',
+                        data: 'no_invoice',
+                        width: '150px',
+                        class: 'text-center'
+                    },
+                    {
+                        data: 'nama_customer',
+                    },
+                    { 
+                        data: 'tanggal',
                         width: '150px',
                         class: 'text-center'
                     },
                     { 
-                        data: 'tanggal',
+                        data: 'nama_barang',
+                        width: '200px',
+                        class: 'text-center'
+                    },
+                    { 
+                        data: 'qty',
+                        width: '20px',
+                        class: 'text-center'
                     },
                     {
                         data: "total",

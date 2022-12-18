@@ -13,22 +13,25 @@
 		function data()
 		{
 			// nama table
-			$table      = 'tbl_service';
+			$table      = 'view_service';
 			// nama PK
 			$primaryKey = 'id_service';
 			// list field yang mau ditampilkan
 			$columns    = array(
 				//tabel db(kolom di database) => dt(nama datatable di view)
+				array('db' => 'no_invoice', 'dt' => 'no_invoice'),
 				array('db' => 'id_service', 'dt' => 'id_service'),
+				array('db' => 'nama_customer', 'dt' => 'nama_customer'),
 		        array('db' => 'no_plat', 'dt' => 'no_plat'),
 		        array('db' => 'tanggal', 'dt' => 'tanggal'),
 		        array('db' => 'kd_barang', 'dt' => 'kd_barang'),
 		        array('db' => 'qty', 'dt' => 'qty'),
 		        array('db' => 'total', 'dt' => 'total'),
 		        array('db' => 'keterangan', 'dt' => 'keterangan'),
+		        array('db' => 'nama_barang', 'dt' => 'nama_barang'),
 		        //untuk menampilkan aksi(edit/delete dengan parameter kode mekanik)
 		        array(
-						'db' => 'id_service',
+						'db' => 'no_invoice',
 						'dt' => 'aksi',
 						'formatter' => function($d) {
 							return anchor('income/detail/'.$d, '<i class="fa fa-eye" style="margin-right:5px; margin-left:15px"></i>').' 
@@ -58,7 +61,9 @@
 				$this->model_service->save();
 				redirect('income');
 			} else {
-				$this->template->load('template', 'service/add');
+                $data_id['hellow'] = date('dmy-hms') ;
+                // var_dump($data_id);
+				$this->template->load('template', 'service/add', $data_id);
 			}
 		}
         
@@ -66,6 +71,7 @@
         {
 			$data = array(
 				//tabel di database => name di form
+				'no_invoice'	=> $this->input->post('no_invoice'),
 				'no_plat'		=> $this->input->post('no_plat'),
 				'tanggal'	    => $this->input->post('tanggal'),
 				'kd_barang' 	=> $this->input->post('kd_service'),
@@ -78,14 +84,25 @@
             $jumlah = count($this->input->post('kd_barang'));
             //print_r($jumlah);die();
             for($i=0;$i<$jumlah;$i++){
+                $where = $this->input->post('kd_barang')[$i];
+                $qty = $this->input->post('qty')[$i];
+                $this->db->select('*');
+                $this->db->from('tbl_master_barang');
+                $this->db->where('kd_barang', $where);
+                $query = $this->db->get();
+                $datana = $query->row()->harga_jual;
 
-                $total = 10000;
+                // var_dump($datana->harga_jual);
+                $data = $datana * $qty;
+                // var_dump($data);
+                // $total = 10000;
                 $data = array(
+                        'no_invoice'	=> $this->input->post('no_invoice'),
                         'no_plat'		=> $this->input->post('no_plat'),
                         'tanggal'	    => $this->input->post('tanggal'),
                         'kd_barang' 	=> $this->input->post('kd_barang')[$i],
                         'qty' 	        => $this->input->post('qty')[$i],
-                        'total' 	    => $total,
+                        'total' 	    => $data,
                     );
                 $this->db->insert("tbl_service",$data);
             }
@@ -117,10 +134,11 @@
 
 		function delete()
 		{
-			$id_service = $this->uri->segment(3);
-			if (!empty($id_service)) {
-				$this->db->where('id_service', $id_service);
-				$this->db->delete('tbl_service');
+			$no_invoice = $this->uri->segment(3);
+			if (!empty($no_invoice)) {
+                $this->db->where('no_invoice', $no_invoice);
+                $this->db->delete('tbl_service');
+                // $query = $this->db->get();
 			}
 			redirect('income');
 		}
