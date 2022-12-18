@@ -54,6 +54,11 @@
 		{
 			$this->template->load('template', 'service/view');
 		}
+		
+        function detail()
+		{
+			$this->template->load('template', 'service/detail');
+		}
 
 		function add()
 		{
