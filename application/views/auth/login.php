@@ -27,15 +27,15 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body style = "background-image : url('https://i.imgur.com/HgflTDf.jpg');backgroud-size: 100%;">
+<body style = "background-image : url('https://i.imgur.com/HgflTDf.jpg'); backgroud-size: 100%;">
 
   <div class="login-box">
+      <!-- /.login-logo -->
+      <div class="login-box-body">
+        
       <div class="login-logo">
         <a href="#"><b>Bengkel Motor</b> Zicspeed</a>
       </div>
-      <!-- /.login-logo -->
-      <div class="login-box-body">
-
         <?php echo form_open('auth/check_login'); ?>
 
             <div class="form-group has-feedback">
