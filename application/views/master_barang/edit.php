@@ -39,6 +39,14 @@
                   </div>
 
                   <div class="form-group">
+                      <label class="col-sm-2 control-label">Harga Jual</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" value="<?php echo $master_barang['harga_jual']; ?>" name="harga_jual" class="form-control" placeholder="Masukkan Harga Barang">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
                       <label class="col-sm-2 control-label"></label>
 
                       <div class="col-sm-1">

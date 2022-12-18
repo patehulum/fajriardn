@@ -11,7 +11,10 @@
 				//tabel di database => name di form
 				'kd_barang'		=> $this->input->post('kd_barang', TRUE),
 				'nama_barang'	=> $this->input->post('nama_barang', TRUE),
-				'harga_barang' 	=> $this->input->post('harga_barang', TRUE)
+				'harga_barang' 	=> $this->input->post('harga_barang', TRUE),
+				'harga_jual' 	=> $this->input->post('harga_jual', TRUE),
+				'kuantitas' 	=> 0
+				// 'kuantitas' 	=> $this->input->post('kuantitas', TRUE)
 			);
 			$this->db->insert($this->table, $data);
 		}
@@ -21,6 +24,7 @@
 			$data = array(
 				'nama_barang' 	=> $this->input->post('nama_barang', TRUE),
 				'harga_barang' 	=> $this->input->post('harga_barang', TRUE),
+				'harga_jual' 	=> $this->input->post('harga_jual', TRUE),
 			);
 
 			$kode_barang	= $this->input->post('kd_barang');

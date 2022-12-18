@@ -21,12 +21,15 @@
 				array('db' => 'kd_barang', 'dt' => 'kd_barang'),
 		        array('db' => 'nama_barang', 'dt' => 'nama_barang'),
 		        array('db' => 'harga_barang', 'dt' => 'harga_barang'),
+		        array('db' => 'harga_jual', 'dt' => 'harga_jual'),
+		        array('db' => 'kuantitas', 'dt' => 'kuantitas'),
 		        //untuk menampilkan aksi(edit/delete dengan parameter kode master_barang)
 		        array(
 						'db' => 'kd_barang',
 						'dt' => 'aksi',
 						'formatter' => function($d) {
-							return anchor('master_barang/edit/'.$d, '<i class="fa fa-edit" style="margin-right:5px"></i>').' 
+							return anchor('master_barang/plus/'.$d, '<i class="fa fa-plus" style="color:blue;margin-right:15px"></i> |').
+                            anchor('master_barang/edit/'.$d, '<i class="fa fa-edit" style="margin-right:5px; margin-left:15px"></i>').' 
 							'.anchor('master_barang/delete/'.$d,'<i class="fa fa-times" style="color:red"></i>',array('onclick' => "return confirm('Do you want delete this record')") );
 					}
 		        )

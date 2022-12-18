@@ -21,6 +21,8 @@
                         <th>KODE BARANG</th>
                         <th>NAMA BARANG</th>
                         <th>HARGA BARANG</th>
+                        <th>HARGA JUAL</th>
+                        <th>KUANTITAS</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -67,6 +69,24 @@
                         render: function ( data, type, row ) {
                             return 'Rp. '+ data;
                         }
+                    },
+                    {
+                        data: "harga_jual",
+                        width: '150px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            return 'Rp. '+ data;
+                        }
+                    },
+                    {
+                        data: "kuantitas",
+                        width: '150px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            // return data;
+                            return '<input type="text" value="'+data+'" style="text-align:center;width:50px" disabled/>';
+                        }
+                        // }
                     },
                     { 
                         data: 'aksi',
