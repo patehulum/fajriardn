@@ -13,7 +13,6 @@
 
 		function data()
 		{
-
 			// nama table
 			$table      = 'tbl_mapel';
 			// nama PK
@@ -44,7 +43,6 @@
 		    echo json_encode(
 		     	SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
 		     );
-
 		}
 
 		function index()
