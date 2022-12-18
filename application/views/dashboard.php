@@ -28,9 +28,8 @@
                   <p>Nama Bengkel</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-users"></i>
+                  <i class="fa fa-id-card"></i>
                 </div>
-                <!--a href="<?php echo site_url('siswa') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a-->
               </div>
             </div>
             <!-- ./col -->
@@ -40,14 +39,11 @@
               <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3> <?php echo $info['alamat']; ?></h3>
-
                   <p>Alamat</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-usd"></i>
+                  <i class="fa fa-location-arrow"></i>
                 </div>
-                <!--a href="<?php echo site_url('siswa') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a-->
-              </div>
             </div>
             <!-- ./col -->
 
@@ -62,7 +58,6 @@
                 <div class="icon">
                   <i class="fa fa-usd"></i>
                 </div>
-                <!--a href="<?php echo site_url('siswa') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a-->
               </div>
             </div>
             <!-- ./col -->
