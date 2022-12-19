@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2022 at 02:48 PM
+-- Generation Time: Dec 18, 2022 at 09:11 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -168,13 +168,23 @@ INSERT INTO `tbl_mekanik` (`id_mekanik`, `nama_mekanik`, `bod`, `telp`, `alamat`
 
 CREATE TABLE `tbl_service` (
   `id_service` int(10) NOT NULL,
+  `no_invoice` varchar(100) NOT NULL,
   `no_plat` varchar(100) NOT NULL,
   `tanggal` date NOT NULL,
   `kd_barang` varchar(100) NOT NULL,
-  `harga` int(10) NOT NULL,
   `qty` int(10) NOT NULL,
-  `total` int(10) NOT NULL
+  `total` int(10) NOT NULL,
+  `keterangan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_service`
+--
+
+INSERT INTO `tbl_service` (`id_service`, `no_invoice`, `no_plat`, `tanggal`, `kd_barang`, `qty`, `total`, `keterangan`) VALUES
+(48, 'INV-181222-091216', 'OP 4547 PO', '2022-12-19', '000', 1, 100000, '- amputasi'),
+(49, 'INV-181222-091216', 'OP 4547 PO', '2022-12-19', '5tl-423', 3, 2162940, NULL),
+(50, 'INV-181222-091216', 'OP 4547 PO', '2022-12-19', '5vv-423', 10, 8000000, NULL);
 
 -- --------------------------------------------------------
 
@@ -256,6 +266,25 @@ INSERT INTO `tbl_user_rule` (`id_rule`, `id_menu`, `id_level_user`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_service`
+-- (See below for the actual view)
+--
+CREATE TABLE `view_service` (
+`id_service` int(10)
+,`no_invoice` varchar(100)
+,`no_plat` varchar(100)
+,`tanggal` date
+,`kd_barang` varchar(100)
+,`qty` int(10)
+,`total` int(10)
+,`keterangan` text
+,`nama_customer` varchar(100)
+,`nama_barang` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view_user`
 -- (See below for the actual view)
 --
@@ -268,6 +297,15 @@ CREATE TABLE `view_user` (
 ,`foto` text
 ,`nama_level` varchar(30)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_service`
+--
+DROP TABLE IF EXISTS `view_service`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_service`  AS SELECT `ts`.`id_service` AS `id_service`, `ts`.`no_invoice` AS `no_invoice`, `ts`.`no_plat` AS `no_plat`, `ts`.`tanggal` AS `tanggal`, `ts`.`kd_barang` AS `kd_barang`, `ts`.`qty` AS `qty`, `ts`.`total` AS `total`, `ts`.`keterangan` AS `keterangan`, `tc`.`nama_customer` AS `nama_customer`, `tb`.`nama_barang` AS `nama_barang` FROM ((`tbl_service` `ts` join `tbl_customer` `tc` on(`tc`.`no_plat` = `ts`.`no_plat`)) join `tbl_master_barang` `tb` on(`tb`.`kd_barang` = `ts`.`kd_barang`))  ;
 
 -- --------------------------------------------------------
 
@@ -313,6 +351,12 @@ ALTER TABLE `tbl_mekanik`
   ADD PRIMARY KEY (`id_mekanik`);
 
 --
+-- Indexes for table `tbl_service`
+--
+ALTER TABLE `tbl_service`
+  ADD PRIMARY KEY (`id_service`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -351,6 +395,12 @@ ALTER TABLE `tbl_level_user`
 --
 ALTER TABLE `tbl_mekanik`
   MODIFY `id_mekanik` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_service`
+--
+ALTER TABLE `tbl_service`
+  MODIFY `id_service` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
