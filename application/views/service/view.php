@@ -11,7 +11,7 @@
 
             <!-- button add -->
             <?php
-                echo anchor('income/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
+                echo anchor('service/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
             ?>
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
