@@ -33,10 +33,10 @@
                   </div>
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">No. Telp</label>
+                      <label class="col-sm-2 control-label">No Telp</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $mekanik['telp']; ?>" name="telp" class="form-control" placeholder="Masukkan No. Telp">
+                        <input type="text" value="<?php echo $mekanik['telp']; ?>" name="telp" class="form-control" placeholder="Masukkan No Telp">
                       </div>
                   </div>
 
