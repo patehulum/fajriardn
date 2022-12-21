@@ -32,37 +32,7 @@
 					$this->session->set_userdata($loginUser);
 					redirect('tampilan_utama');
 
-				} 
-				// elseif (!empty($loginGuru)) {
-				// 	$sessionGuru = array(
-				// 			'nama_lengkap'   => $loginGuru['nama_guru'],
-				// 			'id_level_user'  => 3,
-				// 			'id_guru'		 => $loginGuru['id_guru'],
-				// 			'status'		 => $loginGuru['status']
-				// 	);
-				// 	$this->session->set_userdata($sessionGuru);
-
-				// 	if ($loginGuru['status'] == "Aktif")
-				// 	{
-				// 		redirect('tampilan_utama');
-				// 	} else {
-				// 		echo "<script>
-				// 		alert('Tidak dapat Log In, Anda sudah tidak Aktif!')
-				// 		window.location ='".base_url('Auth')."'
-				// 		</script>";
-				// 	}
-					
-				// } 
-				// elseif (!empty($loginSiswa)) {
-				// 	$sessionSiswa = array(
-				// 			'nama_lengkap'   => $loginSiswa['nama'],
-				// 			'id_level_user'  => 5,
-				// 			'nis'			 => $loginSiswa['nis'], 
-				// 			'kd_kelas'		 => $loginSiswa['kd_kelas']
-				// 	);
-				// 	$this->session->set_userdata($sessionSiswa);
-				// 	redirect('tampilan_utama');
-				// }
+				}
 				else {
 					redirect('auth');
 				}
@@ -73,8 +43,14 @@
 
 		function logout()
 		{
+			$this->session->unset_userdata($loginUser);
 			$this->session->sess_destroy();
+<<<<<<< HEAD
 			redirect('auth/login');
+=======
+			// unset($loginUser);
+			redirect('auth');
+>>>>>>> f330dd64267850d5f97541879ee8a37a36a45382
 		}
 
 	}

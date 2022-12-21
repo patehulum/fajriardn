@@ -43,11 +43,11 @@
 <script>
         $(document).ready(function() {
             var t = $('#mytable').DataTable( {
-                "ajax": '<?php echo site_url('income/data'); ?>',
+                "ajax": '<?php echo site_url('service/data'); ?>',
                 "order": [[ 1, 'asc' ]],
                 "columns": [
                     {
-                        data: null,
+                        data: null, 
                         width: '50px',
                         class: 'text-center',
                         orderable: false,

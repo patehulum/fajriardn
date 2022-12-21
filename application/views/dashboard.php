@@ -44,6 +44,7 @@
                 <div class="icon">
                   <i class="fa fa-location-arrow"></i>
                 </div>
+              </div>
             </div>
             <!-- ./col -->
 
@@ -59,8 +60,8 @@
                   <i class="fa fa-usd"></i>
                 </div>
               </div>
-            </div>
             <!-- ./col -->
+            </div>
 
             <!-- ./col -->
 

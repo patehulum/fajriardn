@@ -9,7 +9,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <?php
-                echo form_open('income/simpan', 'role="form" class="form-horizontal"');
+                echo form_open('service/simpan', 'role="form" class="form-horizontal"');
             ?>
 
                 <div class="box-body">
@@ -62,13 +62,30 @@
                         <input type="text" name="biaya_service" class="form-control" placeholder="Masukkan biaya jasa service">
                       </div>
                   </div>
+                  
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Nama Mekanik</label>
+
+                      <div class="col-sm-9">
+                        <?php
+                          echo cmb_dinamis('id_mekanik', 'tbl_mekanik', 'nama_mekanik', 'id_mekanik');
+                        ?>
+                      </div>
+                  </div>
 
                   <div class="form-group rec-element">
                       <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Barang<span
                               class="required">*</span>
                       </label>
-                      <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" name="kd_barang[]" id="kd_barang1" alt="1" required="required" class="form-control col-md-7 col-xs-12">
+                      <div class="col-md-5 col-sm-5 col-xs-12">
+                        <input type="text" name="kd_barang[]" id="kd_barang1" alt="1" required="required" class="form-control col-md-7 col-xs-12" onchange="getqty(this)">
+                      </div>
+                      
+                      <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Stock<span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div id="stock"></div>
                       </div>
                   </div>
 
@@ -89,7 +106,7 @@
                           <button type="button" class="btn btn-info tambah-form">Tambah Data</button>
 
                           <?php
-                            echo anchor('income', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
+                            echo anchor('service', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
                           ?>
                           <button type="submit" class="btn btn-success">Simpan</button>
                       </div>
@@ -162,10 +179,17 @@
                 '<div class="form-group">' +
                   '<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Barang ' + i + ' <span class="required">*</span>' +
                   '</label>' +
-                  '<div class="col-md-9 col-sm-9 col-xs-12">' +
-                  '<input type="text" name="kd_barang[]" id="kd_barang'+i+'" alt="' +i+'" required="required" class="form-control col-md-7 col-xs-12">' +
+                  '<div class="col-md-5 col-sm-5 col-xs-12">' +
+                  '<div>' +
+                  '<input type="text" name="kd_barang[]" id="kd_barang'+i+'" alt="' +i+'" required="required" class="form-control" onchange="getqty(this)">' +
                   '</div>' +
                   '</div>' +
+
+                  '<label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Stock<span class="required">*</span></label>' +
+                  '<div class="col-md-3 col-sm-3 col-xs-12">' +
+                    '<div id="stock"></div>' +
+                  '</div>'
+
                 '</div>' +
 
                 '<div class="form-group">' +
@@ -195,4 +219,21 @@
             $('#jumlahkolom').val(i - 1);
         });
     });
+</script>
+
+<script>
+function getqty(obj) 
+  {
+    var id = $(obj).val();
+    console.log(id);
+    $.ajax({
+            type:'POST',
+            url:"<?php echo site_url('master_barang/getqty');?>",
+            data:{'id':id},
+            success : function(html) {
+                $("#stock").html(html);
+                // var kelas   = $("#cbkelas").val();
+            }
+        });
+  }
 </script>
