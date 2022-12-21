@@ -6,6 +6,9 @@
 		function __construct()
 		{
 			parent::__construct();
+			if( empty($this->session->userdata('username'))){
+				redirect(base_url("auth"));
+			}
 			//checkAksesModule();
 			$this->load->library('ssp');
 			$this->load->model('model_user');

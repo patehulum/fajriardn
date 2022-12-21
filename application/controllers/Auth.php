@@ -6,10 +6,9 @@
 		function __construct()
 		{
 			parent::__construct();
-			if( !empty($this->session->userdata('username'))){
-				redirect(base_url("tampilan_utama"));
-			}
-			$this->load->library('session');
+			// if( !empty($this->session->userdata('username'))){
+			// 	redirect(base_url("tampilan_utama"));
+			// }
 			$this->load->model('model_user');
 			// $this->load->model('model_guru');
 			// $this->load->model('model_siswa');
@@ -26,12 +25,9 @@
 				$username	= $this->input->post('username');
 				$password 	= $this->input->post('password');
 				$loginUser		= $this->model_user->login($username, $password);
-				// $loginGuru  	= $this->model_guru->login($username, $password);
-				// $loginSiswa  	= $this->model_siswa->login($username, $password);
 				if (!empty($loginUser)) {
 					$this->session->set_userdata($loginUser);
 					redirect('tampilan_utama');
-
 				}
 				else {
 					redirect('auth');
@@ -43,10 +39,13 @@
 
 		function logout()
 		{
-			$this->session->unset_userdata($loginUser);
+			$array_items = array('username' => '', 'email' => '');
+			$this->session->unset_userdata($array_items);
+			// $this->session->unset_userdata($loginUser);
 			$this->session->sess_destroy();
 			// unset($loginUser);
 			redirect('auth');
+			// $this->load->view('auth/login');
 		}
 
 	}
