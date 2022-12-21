@@ -43,14 +43,11 @@
 			$this->session->unset_userdata($array_items);
 			// $this->session->unset_userdata($loginUser);
 			$this->session->sess_destroy();
-<<<<<<< HEAD
-			redirect('auth/login');
-=======
+			// redirect('auth/login');
 			// unset($loginUser);
 			redirect('auth');
 			// $this->load->view('auth/login');
 		}
 
 	}
-
 ?>
