@@ -67,6 +67,40 @@
 			}
 		}
 
+		function out_data(){
+			
+			// nama table
+			$table      = 'tbl_barang_out';
+			// nama PK
+			$primaryKey = 'id_out';
+			// list field yang mau ditampilkan
+			$columns    = array(
+				//tabel db(kolom di database) => dt(nama datatable di view)
+				array('db' => 'kd_barang', 'dt' => 'kd_barang'),
+				array('db' => 'nama_barang', 'dt' => 'nama_barang'),
+		        array('db' => 'tanggal_out', 'dt' => 'tanggal_out'),
+		        array('db' => 'invoice_out', 'dt' => 'invoice_out'),
+		        array('db' => 'qty_awal', 'dt' => 'qty_awal'),
+		        array('db' => 'qty_out', 'dt' => 'qty_out'),
+		        array('db' => 'last_qty', 'dt' => 'last_qty'),
+		    );
+
+			$sql_details = array(
+				'user' => $this->db->username,
+				'pass' => $this->db->password,
+				'db'   => $this->db->database,
+				'host' => $this->db->hostname
+		    );
+		    echo json_encode(
+		     	SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
+		     );
+		}
+
+		function out()
+		{
+			$this->template->load('template', 'master_barang/out');
+		}
+
 		function edit()
 		{
 			if (isset($_POST['submit'])) {
@@ -109,8 +143,16 @@
 			$id = $this->input->post('id',true);
 			$data	= $this->db->get_where('tbl_master_barang', array('kd_barang' => $id))->row();
 			// var_dump($data->kuantitas);
-			$kuantitas = $data->kuantitas;
-			echo "<input type='text' name='kuantitas' value='$kuantitas' class='form-control col-md-7 col-xs-12'>";
+			
+			// $kuantitas = $data->kuantitas;
+			// echo "<input type='text' name='kuantitas' value='$kuantitas' class='form-control col-md-7 col-xs-12'>";
+			if ($data){
+				$kuantitas = $data->kuantitas;
+				echo "<input type='text' name='kuantitas' value='$kuantitas' class='form-control col-md-7 col-xs-12'>";
+			}
+			else{
+				echo "<input type='text' name='kuantitas' value='Kode barang tidak ditemukan' class='form-control col-md-7 col-xs-12' style='color:red'>";
+			}
 			// exit;
 		}
 	}

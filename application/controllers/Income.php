@@ -54,7 +54,7 @@
 		{
 			$this->template->load('template', 'service/view');
 		}
-		
+
         function detail()
 		{
 			$this->template->load('template', 'service/detail');
@@ -74,11 +74,15 @@
         
         public function simpan()
         {
+			$invoicena = $this->input->post('no_invoice');
+			$platna = $this->input->post('no_plat');
+			$tanggalna = $this->input->post('tanggal');
+
 			$data = array(
 				//tabel di database => name di form
-				'no_invoice'	=> $this->input->post('no_invoice'),
-				'no_plat'		=> $this->input->post('no_plat'),
-				'tanggal'	    => $this->input->post('tanggal'),
+				'no_invoice'	=> $invoicena,
+				'no_plat'		=> $platna,
+				'tanggal'	    => $tanggalna,
 				'kd_barang' 	=> $this->input->post('kd_service'),
 				'qty' 	        => 1,
 				'total' 	    => $this->input->post('biaya_service'),
@@ -91,25 +95,44 @@
             for($i=0;$i<$jumlah;$i++){
                 $where = $this->input->post('kd_barang')[$i];
                 $qty = $this->input->post('qty')[$i];
+
                 $this->db->select('*');
                 $this->db->from('tbl_master_barang');
                 $this->db->where('kd_barang', $where);
                 $query = $this->db->get();
                 $datana = $query->row()->harga_jual;
+                $barangna = $query->row()->nama_barang;
 
-                // var_dump($datana->harga_jual);
-                $data = $datana * $qty;
-                // var_dump($data);
-                // $total = 10000;
+                $totalna = $datana * $qty;
+				
                 $data = array(
-                        'no_invoice'	=> $this->input->post('no_invoice'),
-                        'no_plat'		=> $this->input->post('no_plat'),
-                        'tanggal'	    => $this->input->post('tanggal'),
+                        'no_invoice'	=> $invoicena,
+                        'no_plat'		=> $platna,
+                        'tanggal'	    => $tanggalna,
                         'kd_barang' 	=> $this->input->post('kd_barang')[$i],
                         'qty' 	        => $this->input->post('qty')[$i],
-                        'total' 	    => $data,
+                        'total' 	    => $totalna,
                     );
                 $this->db->insert("tbl_service",$data);
+
+                $stockna = $query->row()->kuantitas;
+				$kurangi = $this->input->post('qty')[$i];
+				$jumlahna = $stockna -$kurangi;
+
+				$this->db->set('kuantitas', $jumlahna);
+				$this->db->where('kd_barang', $where);
+				$this->db->update('tbl_master_barang');
+
+                $barang_out = array(
+                        'kd_barang' 	=> $this->input->post('kd_barang')[$i],
+                        'nama_barang'	=> $barangna,
+                        'tanggal_out'	=> $tanggalna,
+                        'invoice_out'	=> $invoicena,
+                        'qty_awal'		=> $stockna,
+                        'qty_out'		=> $kurangi,
+                        'last_qty'		=> $jumlahna,
+                    );
+                $this->db->insert("tbl_barang_out",$barang_out);
             }
             redirect('income');
         } 
