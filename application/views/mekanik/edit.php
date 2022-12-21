@@ -14,7 +14,7 @@
 
                 <div class="box-body">
 
-                  <input type="text" value="<?php echo $mekanik['id_mekanik']; ?>" name="id_mekanik" class="form-control" hidden>
+                  <input type="hidden" value="<?php echo $mekanik['id_mekanik']; ?>" name="id_mekanik" class="form-control">
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Nama Mekanik</label>

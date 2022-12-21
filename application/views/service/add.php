@@ -181,14 +181,14 @@
                   '</label>' +
                   '<div class="col-md-5 col-sm-5 col-xs-12">' +
                   '<div>' +
-                  '<input type="text" name="kd_barang[]" id="kd_barang'+i+'" alt="' +i+'" required="required" class="form-control" onchange="getqty(this)">' +
+                  '<input type="text" name="kd_barang[]" id="kd_barang'+i+'" alt="' +i+'" required="required" class="form-control">' +
                   '</div>' +
                   '</div>' +
 
                   '<label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Stock<span class="required">*</span></label>' +
                   '<div class="col-md-3 col-sm-3 col-xs-12">' +
-                    '<div id="stock"></div>' +
-                  '</div>'
+                    '<div class="stock-na"></div>' +
+                  '</div>' +
 
                 '</div>' +
 
