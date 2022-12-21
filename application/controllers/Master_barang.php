@@ -103,5 +103,15 @@
 			}
 			redirect('master_barang');
 		}
+
+		public function getqty() 
+		{
+			$id = $this->input->post('id',true);
+			$data	= $this->db->get_where('tbl_master_barang', array('kd_barang' => $id))->row();
+			// var_dump($data->kuantitas);
+			$kuantitas = $data->kuantitas;
+			echo "<input type='text' name='kuantitas' value='$kuantitas' class='form-control col-md-7 col-xs-12'>";
+			// exit;
+		}
 	}
 ?>
