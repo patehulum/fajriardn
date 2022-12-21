@@ -28,7 +28,7 @@
                       <label class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $mekanik['bod']; ?>" name="bod" class="form-control" placeholder="Masukkan Harga Barang">
+                        <input type="text" value="<?php echo $mekanik['bod']; ?>" name="bod" class="form-control" placeholder="Masukkan Tempat, Tanggal Lahir">
                       </div>
                   </div>
 
@@ -36,7 +36,7 @@
                       <label class="col-sm-2 control-label">No. Telp</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $mekanik['telp']; ?>" name="telp" class="form-control" placeholder="Masukkan Harga Barang">
+                        <input type="text" value="<?php echo $mekanik['telp']; ?>" name="telp" class="form-control" placeholder="Masukkan No. Telp">
                       </div>
                   </div>
 
@@ -44,7 +44,7 @@
                       <label class="col-sm-2 control-label">Alamat</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $mekanik['alamat']; ?>" name="alamat" class="form-control" placeholder="Masukkan Harga Barang">
+                        <input type="text" value="<?php echo $mekanik['alamat']; ?>" name="alamat" class="form-control" placeholder="Masukkan Alamat">
                       </div>
                   </div>
                   
