@@ -38,8 +38,8 @@
 					'foto'			=> $foto
 				);
 			}
-			$kode_barang	= $this->input->post('kd_barang', TRUE);
-			$this->db->where('kd_barang', $kode_barang);
+			$id_mekanik	= $this->input->post('id_mekanik', TRUE);
+			$this->db->where('id_mekanik', $id_mekanik);
 			$this->db->update($this->table, $data);
 		}
 	}

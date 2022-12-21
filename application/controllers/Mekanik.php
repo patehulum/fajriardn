@@ -98,9 +98,9 @@
 
 		function delete()
 		{
-			$kode_barang = $this->uri->segment(3);
-			if (!empty($kode_barang)) {
-				$this->db->where('id_mekanik', $kode_barang);
+			$id_mekanik = $this->uri->segment(3);
+			if (!empty($id_mekanik)) {
+				$this->db->where('id_mekanik', $id_mekanik);
 				$this->db->delete('tbl_mekanik');
 			}
 			redirect('mekanik');
