@@ -12,6 +12,8 @@
 				'id_customer'	=> $this->input->post('id_customer', TRUE),
 				'nama_customer'	=> $this->input->post('nama_customer', TRUE),
 				'no_plat' 	=> $this->input->post('no_plat', TRUE),
+				'alamat' 	=> $this->input->post('alamat', TRUE),
+				'handphone' 	=> $this->input->post('handphone', TRUE),
 			);
 			$this->db->insert($this->table, $data);
 		}
@@ -21,6 +23,8 @@
             $data = array(
                 'nama_customer' 	=> $this->input->post('nama_customer', TRUE),
                 'no_plat' 	=> $this->input->post('no_plat', TRUE),
+                'alamat' 	=> $this->input->post('alamat', TRUE),
+                'handphone' 	=> $this->input->post('no_plat', TRUE),
             );
 			$id_cust	= $this->input->post('id_customer', TRUE);
 			$this->db->where('id_customer', $id_cust);

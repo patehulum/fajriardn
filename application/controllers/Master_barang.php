@@ -37,9 +37,15 @@
 						'db' => 'kd_barang',
 						'dt' => 'aksi',
 						'formatter' => function($d) {
-							return anchor('master_barang/plus/'.$d, '<i class="fa fa-plus" style="color:blue;margin-right:15px"></i> |').
-                            anchor('master_barang/edit/'.$d, '<i class="fa fa-edit" style="margin-right:5px; margin-left:15px"></i>').' 
-							'.anchor('master_barang/delete/'.$d,'<i class="fa fa-times" style="color:red"></i>',array('onclick' => "return confirm('Do you want delete this record')") );
+							if ($d !== '000'){
+								return anchor('master_barang/plus/'.$d, '<i class="fa fa-plus" style="color:blue;margin-right:15px"></i> |').
+								anchor('master_barang/edit/'.$d, '<i class="fa fa-edit" style="margin-right:5px; margin-left:15px"></i>').' 
+								'.anchor('master_barang/delete/'.$d,'<i class="fa fa-times" style="color:red"></i>',array('onclick' => "return confirm('Do you want delete this record')") );
+							}
+							else{
+								return anchor('master_barang/edit/'.$d, '<i class="fa fa-edit" style="margin-right:5px; margin-left:15px"></i>').' 
+								'.anchor('master_barang/delete/'.$d,'<i class="fa fa-times" style="color:red"></i>',array('onclick' => "return confirm('Do you want delete this record')") );
+							}
 					}
 		        )
 		    );
@@ -99,9 +105,42 @@
 		     );
 		}
 
+		function in_data(){
+			
+			// nama table
+			$table      = 'tbl_barang_in';
+			// nama PK
+			$primaryKey = 'id_in';
+			// list field yang mau ditampilkan
+			$columns    = array(
+				//tabel db(kolom di database) => dt(nama datatable di view)
+				array('db' => 'kd_barang', 'dt' => 'kd_barang'),
+				array('db' => 'nama_barang', 'dt' => 'nama_barang'),
+		        array('db' => 'tanggal_in', 'dt' => 'tanggal_in'),
+		        array('db' => 'qty_awal', 'dt' => 'qty_awal'),
+		        array('db' => 'qty_in', 'dt' => 'qty_in'),
+		        array('db' => 'last_qty', 'dt' => 'last_qty'),
+		    );
+
+			$sql_details = array(
+				'user' => $this->db->username,
+				'pass' => $this->db->password,
+				'db'   => $this->db->database,
+				'host' => $this->db->hostname
+		    );
+		    echo json_encode(
+		     	SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
+		     );
+		}
+
 		function out()
 		{
 			$this->template->load('template', 'master_barang/out');
+		}
+
+		function in()
+		{
+			$this->template->load('template', 'master_barang/in');
 		}
 
 		function edit()
@@ -141,6 +180,70 @@
 			redirect('master_barang');
 		}
 		
+
+		function plus()
+		{
+			$kd_barang = $this->uri->segment(3);
+			$data['master_barang'] 	= $this->db->get_where('tbl_master_barang', array('kd_barang' => $kd_barang))->row_array();
+			$this->template->load('template', 'master_barang/plus', $data);
+
+		}
+
+		function plus_data()
+		{
+			$kode_barang = $this->input->post('kd_barang');
+			$barangna = $this->input->post('nama_barang');
+			$jumlahna = $this->input->post('qty_in');
+			$tanggalna = date('y-m-d');
+
+			$this->db->select('*');
+			$this->db->from('tbl_master_barang');
+			$this->db->where('kd_barang', $kode_barang);
+			$query = $this->db->get();
+
+			$hargana = $query->row()->harga_barang;
+			$stockna = $query->row()->kuantitas;
+
+			$lastqty = $stockna + $jumlahna;
+			$pitih = $jumlahna * $hargana;
+			
+			$this->db->select('*');
+			$this->db->from('tbl_info');
+			$query = $this->db->get();
+			$saldokarang = $query->row()->saldo;
+
+			$siso = $saldokarang - $pitih;
+
+			$data = array(
+				//tabel di database => name di form
+				'kd_barang'		=> $kode_barang,
+				'nama_barang'	=> $barangna,
+				'tanggal_in'	=> $tanggalna,
+				'qty_awal' 		=> $stockna,
+				'qty_in' 	  	=> $jumlahna,
+				'last_qty' 	    => $lastqty,
+			);
+			$this->db->insert("tbl_barang_in",$data);
+			
+			$this->db->set('kuantitas', $lastqty);
+			$this->db->where('kd_barang', $kode_barang);
+			$this->db->update('tbl_master_barang');
+
+			$outcome = array (
+				'tanggal_outcome'	=> $tanggalna,
+				'keperluan'			=> "Beli $barangna $jumlahna Pcs",
+				'outcome_amount'	=> $pitih,
+				'saldo_awal' 		=> $saldokarang,
+				'saldo_akhir' 	  	=> $siso,
+			);
+			$this->db->insert("tbl_outcome",$outcome);
+			
+			$this->db->set('saldo', $siso);
+			$this->db->where('nama_bengkel', 'ZicSpeed');
+			$this->db->update('tbl_info');
+
+			redirect('master_barang');
+		}
 
 		public function getqty() 
 		{

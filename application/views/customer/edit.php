@@ -33,6 +33,22 @@
                   </div>
 
                   <div class="form-group">
+                      <label class="col-sm-2 control-label">Alamat</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" value="<?php echo $customer['alamat']; ?>" name="alamat" class="form-control" placeholder="Masukkan Harga Barang">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">No. Handphone</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" value="<?php echo $customer['handphone']; ?>" name="handphone" class="form-control" placeholder="Masukkan Harga Barang">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
                       <label class="col-sm-2 control-label"></label>
 
                       <div class="col-sm-1">

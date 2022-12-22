@@ -4,7 +4,7 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Pemasukan</h3>
+              <h3 class="box-title">Data Pengeluaran</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -13,11 +13,10 @@
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>N0. INVOICE</th>
-                        <th>TANGGAL INVOICE</th>
-                        <th>NAMA CUSTOMER</th>
+                        <th>TANGGAL PENGELUARAN</th>
+                        <th>KEPERLUAN</th>
+                        <th>JUMLAH</th>
                         <th>SALDO AWAL</th>
-                        <th>JUMLAH INCOME</th>
                         <th>SALDO AKHIR</th>
                     </tr>
                 </thead>
@@ -40,7 +39,7 @@
 <script>
         $(document).ready(function() {
             var t = $('#mytable').DataTable( {
-                "ajax": '<?php echo site_url('income/data'); ?>',
+                "ajax": '<?php echo site_url('outcome/data'); ?>',
                 "order": [[ 1, 'asc' ]],
                 "columns": [
                     {
@@ -50,22 +49,16 @@
                         orderable: false,
                     },
                     {
-                        data: 'invoice_income',
-                        width: '150px',
-                        class: 'text-center'
-                    },
-                    { 
-                        data: 'tanggal_income',
-                        width: '100px',
-                        class: 'text-center'
-                    },
-                    { 
-                        data: 'customer',
+                        data: 'tanggal_outcome',
                         width: '200px',
                         class: 'text-center'
                     },
                     { 
-                        data: 'saldo_awal',
+                        data: 'keperluan',
+                        class: 'text-center'
+                    },
+                    { 
+                        data: 'outcome_amount',
                         width: '100px',
                         class: 'text-center',
                         render: function ( data, type, row ) {
@@ -73,7 +66,7 @@
                         }
                     },
                     { 
-                        data: 'income_amount',
+                        data: 'saldo_awal',
                         width: '100px',
                         class: 'text-center',
                         render: function ( data, type, row ) {
@@ -86,7 +79,6 @@
                         class: 'text-center',
                         render: function ( data, type, row ) {
                             return 'Rp. '+ data;
-                            
                         }
                     },
                 ]

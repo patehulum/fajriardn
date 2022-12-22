@@ -4,21 +4,23 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Pemasukan</h3>
+              <h3 class="box-title">Data Barang Masuk</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+
+            <!-- button add -->
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>N0. INVOICE</th>
-                        <th>TANGGAL INVOICE</th>
-                        <th>NAMA CUSTOMER</th>
-                        <th>SALDO AWAL</th>
-                        <th>JUMLAH INCOME</th>
-                        <th>SALDO AKHIR</th>
+                        <th>KODE BARANG</th>
+                        <th>NAMA BARANG</th>
+                        <th>Tanggal IN</th>
+                        <th>QTY AWAL</th>
+                        <th>QTY OUT</th>
+                        <th>STOCK</th>
                     </tr>
                 </thead>
               </table>
@@ -40,7 +42,7 @@
 <script>
         $(document).ready(function() {
             var t = $('#mytable').DataTable( {
-                "ajax": '<?php echo site_url('income/data'); ?>',
+                "ajax": '<?php echo site_url('master_barang/in_data'); ?>',
                 "order": [[ 1, 'asc' ]],
                 "columns": [
                     {
@@ -49,45 +51,52 @@
                         class: 'text-center',
                         orderable: false,
                     },
+
                     {
-                        data: 'invoice_income',
+                        data: 'kd_barang',
                         width: '150px',
                         class: 'text-center'
                     },
                     { 
-                        data: 'tanggal_income',
-                        width: '100px',
-                        class: 'text-center'
+                        data: 'nama_barang',
                     },
-                    { 
-                        data: 'customer',
-                        width: '200px',
-                        class: 'text-center'
-                    },
-                    { 
-                        data: 'saldo_awal',
-                        width: '100px',
+                    {
+                        data: "tanggal_in",
+                        width: '150px',
                         class: 'text-center',
                         render: function ( data, type, row ) {
-                            return 'Rp. '+ data;
+                            return data;
                         }
                     },
-                    { 
-                        data: 'income_amount',
-                        width: '100px',
+                    {
+                        data: "qty_awal",
+                        width: '150px',
                         class: 'text-center',
                         render: function ( data, type, row ) {
-                            return 'Rp. '+ data;
+                            // return data;
+                            return '<input type="text" value="'+data+'" style="text-align:center;width:50px" disabled/>';
                         }
+                        // }
                     },
-                    { 
-                        data: 'saldo_akhir',
-                        width: '100px',
+                    {
+                        data: "qty_in",
+                        width: '150px',
                         class: 'text-center',
                         render: function ( data, type, row ) {
-                            return 'Rp. '+ data;
-                            
+                            // return data;
+                            return '<input type="text" value="'+data+'" style="text-align:center;width:50px" disabled/>';
                         }
+                        // }
+                    },
+                    {
+                        data: "last_qty",
+                        width: '150px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            // return data;
+                            return '<input type="text" value="'+data+'" style="text-align:center;width:50px" disabled/>';
+                        }
+                        // }
                     },
                 ]
             } );

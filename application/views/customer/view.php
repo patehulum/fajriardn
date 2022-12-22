@@ -20,6 +20,8 @@
                         <th>NO</th>
                         <th>NAMA CUSTOMER</th>
                         <th>No. PLAT KENDARAAN</th>
+                        <th>Alamat</th>
+                        <th>No. Handphone</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -56,6 +58,16 @@
                     },
                     {
                         data: "no_plat",
+                        width: '150px',
+                        class: 'text-center',
+                    },
+                    {
+                        data: "alamat",
+                        width: '150px',
+                        class: 'text-center',
+                    },
+                    {
+                        data: "handphone",
                         width: '150px',
                         class: 'text-center',
                     },
