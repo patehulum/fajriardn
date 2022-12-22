@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2022 at 07:50 PM
+-- Generation Time: Dec 22, 2022 at 11:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -41,17 +41,43 @@ CREATE TABLE `tabel_menu` (
 
 INSERT INTO `tabel_menu` (`id`, `nama_menu`, `link`, `icon`, `is_main_menu`) VALUES
 (2, 'Barang', '#', 'fa fa-cubes', 0),
+(3, 'Keuangan', '#', 'fa fa-list', 0),
 (4, 'Master Mekanik', 'mekanik', 'fa fa-book', 0),
-(10, 'Transaksi', '#', 'fa fa-list', 0),
+(5, 'Service Kendaraan', 'service', 'fa fa-money', 0),
+(6, 'Customer', 'cust', 'fa fa-user', 0),
+(7, 'Daftar Barang', 'master_barang', 'fa fa-list', 2),
 (14, 'Pengguna Sistem', 'user', 'fa fa-id-badge', 0),
 (15, 'Menu', 'menu', 'fa fa-list', 0),
-(27, 'Service Kendaraan', 'service', 'fa fa-money', 0),
-(28, 'Pengeluaran', 'outcome', 'fa fa-usd', 10),
-(30, 'Customer', 'cust', 'fa fa-user', 0),
-(31, 'Daftar Barang', 'master_barang', 'fa fa-list', 2),
+(27, 'Pemasukan', 'income', 'fa fa-money', 3),
+(28, 'Pengeluaran', 'outcome', 'fa fa-usd', 3),
 (32, 'Barang Keluar', 'master_barang/out', 'fa fa-sign-out', 2),
-(33, 'Barang Masuk', 'master_barang/in', 'fa fa-truck', 2),
-(34, 'Pemasukan', 'income', 'fa fa-money', 10);
+(33, 'Barang Masuk', 'master_barang/in', 'fa fa-truck', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_barang_in`
+--
+
+CREATE TABLE `tbl_barang_in` (
+  `id_in` int(10) NOT NULL,
+  `kd_barang` varchar(100) NOT NULL,
+  `nama_barang` varchar(100) NOT NULL,
+  `tanggal_in` date NOT NULL,
+  `qty_awal` int(10) NOT NULL,
+  `qty_in` int(10) NOT NULL,
+  `last_qty` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_barang_in`
+--
+
+INSERT INTO `tbl_barang_in` (`id_in`, `kd_barang`, `nama_barang`, `tanggal_in`, `qty_awal`, `qty_in`, `last_qty`) VALUES
+(1, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-22', 2, 3, 5),
+(2, '5vv-423', 'knalpot bobokan mio', '2022-12-22', 3, 10, 13),
+(3, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-22', 5, 2, 7),
+(4, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-22', 7, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -88,17 +114,19 @@ INSERT INTO `tbl_barang_out` (`id_out`, `kd_barang`, `nama_barang`, `tanggal_out
 CREATE TABLE `tbl_customer` (
   `id_customer` int(10) NOT NULL,
   `nama_customer` varchar(100) NOT NULL,
-  `no_plat` varchar(100) NOT NULL
+  `no_plat` varchar(100) NOT NULL,
+  `alamat` text NOT NULL,
+  `handphone` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_customer`
 --
 
-INSERT INTO `tbl_customer` (`id_customer`, `nama_customer`, `no_plat`) VALUES
-(2, 'Nop Al Nab Il', 'BD 9808 K'),
-(3, 'Miki Miko', 'OP 4547 PO'),
-(4, 'Wakcuy', 'B 3452 TMR');
+INSERT INTO `tbl_customer` (`id_customer`, `nama_customer`, `no_plat`, `alamat`, `handphone`) VALUES
+(2, 'Nop Al Nab Il', 'BD 9808 K', 'Jl. nin aja dulu', '0812'),
+(3, 'Miki Miko', 'OP 4547 PO', 'Jl. nin aja dulu aja', '0877'),
+(4, 'Wakcuy', 'B 3452 TMR', 'Jl. nin aja dulu gan', '0888');
 
 -- --------------------------------------------------------
 
@@ -141,7 +169,7 @@ CREATE TABLE `tbl_info` (
 --
 
 INSERT INTO `tbl_info` (`nama_bengkel`, `alamat`, `telp`, `saldo`) VALUES
-('ZicSpeed', 'Kota Bekasi', 682187654, 11725000);
+('ZicSpeed', 'Kota Bekasi', 682187654, 3574505);
 
 -- --------------------------------------------------------
 
@@ -186,10 +214,11 @@ CREATE TABLE `tbl_master_barang` (
 --
 
 INSERT INTO `tbl_master_barang` (`kd_barang`, `nama_barang`, `harga_barang`, `harga_jual`, `kuantitas`, `foto`) VALUES
-('000', 'Jasa Service', 0, 0, 0, 'IMG_3112.jpg'),
+('000', 'Barang Lain | Jasa Service', 0, 0, 0, 'IMG_3112.jpg'),
 ('5nw-76da', 'Vanbelt MIO Sporty BIG ', 63000, 100000, 5, 'wallpaper1.jpg'),
-('5tl-423', 'Stang Mio Sporty 2006', 630099, 50000, 2, 'Untitled2.png'),
-('5vv-423', 'knalpot bobokan mio', 500000, 800000, 3, 'impreza.jpg');
+('5tl-423', 'Stang Mio Sporty 2006', 630099, 50000, 9, 'Untitled2.png'),
+('5vv-423', 'knalpot bobokan mio', 500000, 800000, 13, 'impreza.jpg'),
+('5yp-bys', 'Tangki Byson', 200000, 250000, 0, 'baleno.jpg');
 
 -- --------------------------------------------------------
 
@@ -201,7 +230,7 @@ CREATE TABLE `tbl_mekanik` (
   `id_mekanik` int(10) NOT NULL,
   `nama_mekanik` varchar(100) NOT NULL,
   `bod` varchar(100) NOT NULL,
-  `telp` int(12) NOT NULL,
+  `telp` varchar(12) NOT NULL,
   `alamat` varchar(250) NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -211,8 +240,32 @@ CREATE TABLE `tbl_mekanik` (
 --
 
 INSERT INTO `tbl_mekanik` (`id_mekanik`, `nama_mekanik`, `bod`, `telp`, `alamat`, `foto`) VALUES
-(1, 'Patch', 'Kerinci, 27 Okt 2000', 2147483647, 'jl. baru jadi kemarin', 'user-siluet.jpg'),
-(4, 'Fajri', 'Bekasi, 23 agustus 2022', 5443435, 'jl. baru jadi kemarin juga hahaha', 'praza_22.jpg');
+(1, 'Patch', 'Kerinci, 27 Okt 2000', '2147483647', 'jl. baru jadi kemarin', 'user-siluet.jpg'),
+(4, 'Fajri', 'Bekasi, 23 agustus 2022', '5443435', 'jl. baru jadi kemarin jugas', 'praza_22.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_outcome`
+--
+
+CREATE TABLE `tbl_outcome` (
+  `id_outcome` int(11) NOT NULL,
+  `tanggal_outcome` date NOT NULL,
+  `keperluan` varchar(100) NOT NULL,
+  `outcome_amount` int(10) NOT NULL,
+  `saldo_awal` int(10) NOT NULL,
+  `saldo_akhir` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_outcome`
+--
+
+INSERT INTO `tbl_outcome` (`id_outcome`, `tanggal_outcome`, `keperluan`, `outcome_amount`, `saldo_awal`, `saldo_akhir`) VALUES
+(1, '2022-12-22', '3', 1890297, 11725000, 9834703),
+(2, '2022-12-22', '10', 5000000, 9834703, 4834703),
+(3, '2022-12-22', 'Beli Stang Mio Sporty 2006 2 Pcs', 1260198, 4834703, 3574505);
 
 -- --------------------------------------------------------
 
@@ -386,6 +439,12 @@ ALTER TABLE `tabel_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_barang_in`
+--
+ALTER TABLE `tbl_barang_in`
+  ADD PRIMARY KEY (`id_in`);
+
+--
 -- Indexes for table `tbl_barang_out`
 --
 ALTER TABLE `tbl_barang_out`
@@ -422,6 +481,12 @@ ALTER TABLE `tbl_mekanik`
   ADD PRIMARY KEY (`id_mekanik`);
 
 --
+-- Indexes for table `tbl_outcome`
+--
+ALTER TABLE `tbl_outcome`
+  ADD PRIMARY KEY (`id_outcome`);
+
+--
 -- Indexes for table `tbl_service`
 --
 ALTER TABLE `tbl_service`
@@ -448,6 +513,12 @@ ALTER TABLE `tbl_user_rule`
 --
 ALTER TABLE `tabel_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `tbl_barang_in`
+--
+ALTER TABLE `tbl_barang_in`
+  MODIFY `id_in` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_barang_out`
@@ -478,6 +549,12 @@ ALTER TABLE `tbl_level_user`
 --
 ALTER TABLE `tbl_mekanik`
   MODIFY `id_mekanik` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_outcome`
+--
+ALTER TABLE `tbl_outcome`
+  MODIFY `id_outcome` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_service`
