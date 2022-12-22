@@ -4,25 +4,20 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Table Customer</h3>
+              <h3 class="box-title">Data Pengeluaran</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-
-            <!-- button add -->
-            <?php
-                echo anchor('cust/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
-            ?>
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>NAMA CUSTOMER</th>
-                        <th>No. PLAT KENDARAAN</th>
-                        <th>Alamat</th>
-                        <th>No. Handphone</th>
-                        <th>AKSI</th>
+                        <th>TANGGAL PENGELUARAN</th>
+                        <th>KEPERLUAN</th>
+                        <th>JUMLAH</th>
+                        <th>SALDO AWAL</th>
+                        <th>SALDO AKHIR</th>
                     </tr>
                 </thead>
               </table>
@@ -44,7 +39,7 @@
 <script>
         $(document).ready(function() {
             var t = $('#mytable').DataTable( {
-                "ajax": '<?php echo site_url('cust/data'); ?>',
+                "ajax": '<?php echo site_url('outcome/data'); ?>',
                 "order": [[ 1, 'asc' ]],
                 "columns": [
                     {
@@ -53,28 +48,38 @@
                         class: 'text-center',
                         orderable: false,
                     },
-                    { 
-                        data: 'nama_customer',
-                    },
                     {
-                        data: "no_plat",
-                        width: '150px',
-                        class: 'text-center',
-                    },
-                    {
-                        data: "alamat",
-                        width: '150px',
-                        class: 'text-center',
-                    },
-                    {
-                        data: "handphone",
-                        width: '150px',
-                        class: 'text-center',
-                    },
-                    { 
-                        data: 'aksi',
-                        width: '80px',
+                        data: 'tanggal_outcome',
+                        width: '200px',
                         class: 'text-center'
+                    },
+                    { 
+                        data: 'keperluan',
+                        class: 'text-center'
+                    },
+                    { 
+                        data: 'outcome_amount',
+                        width: '100px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            return 'Rp. '+ data;
+                        }
+                    },
+                    { 
+                        data: 'saldo_awal',
+                        width: '100px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            return 'Rp. '+ data;
+                        }
+                    },
+                    { 
+                        data: 'saldo_akhir',
+                        width: '100px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            return 'Rp. '+ data;
+                        }
                     },
                 ]
             } );

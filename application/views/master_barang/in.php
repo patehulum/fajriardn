@@ -4,25 +4,23 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Table Customer</h3>
+              <h3 class="box-title">Data Barang Masuk</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
             <!-- button add -->
-            <?php
-                echo anchor('cust/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
-            ?>
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>NAMA CUSTOMER</th>
-                        <th>No. PLAT KENDARAAN</th>
-                        <th>Alamat</th>
-                        <th>No. Handphone</th>
-                        <th>AKSI</th>
+                        <th>KODE BARANG</th>
+                        <th>NAMA BARANG</th>
+                        <th>Tanggal IN</th>
+                        <th>QTY AWAL</th>
+                        <th>QTY OUT</th>
+                        <th>STOCK</th>
                     </tr>
                 </thead>
               </table>
@@ -44,7 +42,7 @@
 <script>
         $(document).ready(function() {
             var t = $('#mytable').DataTable( {
-                "ajax": '<?php echo site_url('cust/data'); ?>',
+                "ajax": '<?php echo site_url('master_barang/in_data'); ?>',
                 "order": [[ 1, 'asc' ]],
                 "columns": [
                     {
@@ -53,28 +51,52 @@
                         class: 'text-center',
                         orderable: false,
                     },
-                    { 
-                        data: 'nama_customer',
-                    },
+
                     {
-                        data: "no_plat",
+                        data: 'kd_barang',
                         width: '150px',
-                        class: 'text-center',
-                    },
-                    {
-                        data: "alamat",
-                        width: '150px',
-                        class: 'text-center',
-                    },
-                    {
-                        data: "handphone",
-                        width: '150px',
-                        class: 'text-center',
-                    },
-                    { 
-                        data: 'aksi',
-                        width: '80px',
                         class: 'text-center'
+                    },
+                    { 
+                        data: 'nama_barang',
+                    },
+                    {
+                        data: "tanggal_in",
+                        width: '150px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            return data;
+                        }
+                    },
+                    {
+                        data: "qty_awal",
+                        width: '150px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            // return data;
+                            return '<input type="text" value="'+data+'" style="text-align:center;width:50px" disabled/>';
+                        }
+                        // }
+                    },
+                    {
+                        data: "qty_in",
+                        width: '150px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            // return data;
+                            return '<input type="text" value="'+data+'" style="text-align:center;width:50px" disabled/>';
+                        }
+                        // }
+                    },
+                    {
+                        data: "last_qty",
+                        width: '150px',
+                        class: 'text-center',
+                        render: function ( data, type, row ) {
+                            // return data;
+                            return '<input type="text" value="'+data+'" style="text-align:center;width:50px" disabled/>';
+                        }
+                        // }
                     },
                 ]
             } );

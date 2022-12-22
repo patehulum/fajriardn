@@ -31,6 +31,22 @@
                   </div>
 
                   <div class="form-group">
+                      <label class="col-sm-2 control-label">Alamat</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" name="alamat" class="form-control" placeholder="Masukkan Tempat, tanggal lahir">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">No. Handphone</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" name="handphone" class="form-control" placeholder="Masukkan Tempat, tanggal lahir">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
                       <label class="col-sm-2 control-label"></label>
 
                       <div class="col-sm-1">
