@@ -7,7 +7,9 @@
               <h3 class="box-title">Data Table Master Barang</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body"> 
+                <!-- button cetak -->
+                <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report/servicekeluar/')?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
 
             <!-- button add -->
             <?php

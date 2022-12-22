@@ -18,5 +18,6 @@
 
 			$this->template->load('template', 'dashboard', $data);
 		}
+		
 	}
 ?>

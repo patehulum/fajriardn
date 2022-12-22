@@ -86,6 +86,7 @@
                         class: 'text-center',
                         render: function ( data, type, row ) {
                             return 'Rp. '+ data;
+                            
                         }
                     },
                 ]
