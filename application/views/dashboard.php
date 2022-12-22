@@ -50,10 +50,19 @@
 
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
+              <!-- <?php
+                  function rupiah($angka)
+                  {
+	
+                    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+                    return $hasil_rupiah;
+                    
+                  
+                  }?> -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>Rp. <?php echo $info['saldo']; ?></h3>
-
+                 <h3> <?php echo rupiah($info['saldo']) ; ?></h3>
+                  
                   <p>Saldo</p>
                 </div>
                 <div class="icon">

@@ -75,7 +75,7 @@
 				$this->template->load('template', 'master_barang/add');
 			}
 		}
-
+		
 		function out_data(){
 			
 			// nama table
@@ -179,6 +179,7 @@
 			}
 			redirect('master_barang');
 		}
+		
 
 		function plus()
 		{
