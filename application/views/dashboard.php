@@ -50,7 +50,7 @@
 
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
-              <!-- <?php
+               <?php
                   function rupiah($angka)
                   {
 	
@@ -58,7 +58,7 @@
                     return $hasil_rupiah;
                     
                   
-                  }?> -->
+                  }?>
               <div class="small-box bg-green">
                 <div class="inner">
                  <h3> <?php echo rupiah($info['saldo']) ; ?></h3>

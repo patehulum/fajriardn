@@ -83,7 +83,7 @@
                         width: '150px',
                         class: 'text-center',
                         render: function ( data, type, row ) {
-                            return 'Rp. '+ data;
+                            return 'Rp. '+$.fn.dataTable.render.number( '.', '.', 0 ).display(data);
                         }
                     },
                     { 
