@@ -277,7 +277,6 @@ class SSP {
 		);
 	}
 
-
 	/**
 	 * The difference between this method and the `simple` one, is that you can
 	 * apply additional `where` conditions to the SQL queries. These can be in

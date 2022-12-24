@@ -15,6 +15,7 @@
 		function data()
 		{
 			// nama table
+			$date = date("Y-m-d");
 			$table      = 'tbl_gaji_mekanik';
 			// nama PK
 			$primaryKey = 'id_gaji';
@@ -27,13 +28,13 @@
 		        array('db' => 'no_invoice', 'dt' => 'no_invoice'),
 		        array('db' => 'nama_cust', 'dt' => 'nama_cust'),
 		        array('db' => 'jumlah_gaji', 'dt' => 'jumlah_gaji'),
-		        array(
-					'db' => 'tanggal_service',
-					'dt' => 'aksi',
-					'formatter' => function($d) {
-						return anchor('gaji_mekanik/getwhere/'.$d, '<i class="fa fa-print" style="color:blue;margin-right:15px"></i>Cetak slip');
-					}
-		        )
+		        // array(
+				// 	'db' => 'id_mekanik',
+				// 	'dt' => 'aksi',
+				// 	'formatter' => function($d) {
+				// 		return anchor('gaji_mekanik/getwhere/'.$d, '<i class="fa fa-print" style="color:blue;margin-right:15px"></i>Cetak slip');
+				// 	}
+		        // )
 		    );
 			$sql_details = array(
 				'user' => $this->db->username,
@@ -41,6 +42,7 @@
 				'db'   => $this->db->database,
 				'host' => $this->db->hostname
 		    );
+			
 		    echo json_encode(
 		     	SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)
 		     );
@@ -51,9 +53,9 @@
 			$this->template->load('template', 'gaji_mekanik/view');
 		}
 
-		function getwhere()
+		function slip_gaji()
 		{
-			$this->template->load('template', 'gaji_mekanik/view');
+			$this->template->load('template', 'gaji_mekanik/slip');
 		}
 	}
 ?>
