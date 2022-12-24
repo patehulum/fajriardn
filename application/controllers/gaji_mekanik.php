@@ -28,7 +28,7 @@
 		        array('db' => 'nama_cust', 'dt' => 'nama_cust'),
 		        array('db' => 'jumlah_gaji', 'dt' => 'jumlah_gaji'),
 		        array(
-					'db' => 'tanggal_service',
+					'db' => 'no_invoice',
 					'dt' => 'aksi',
 					'formatter' => function($d) {
 						return anchor('gaji_mekanik/getwhere/'.$d, '<i class="fa fa-print" style="color:blue;margin-right:15px"></i>Cetak slip');

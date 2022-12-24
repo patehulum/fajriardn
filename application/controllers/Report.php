@@ -151,19 +151,24 @@ class Report extends CI_Controller
     // Memberikan space kebawah agar tidak terlalu rapat
     $pdf->Cell(10,7,'',0,3);
     $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(35,6,'no_invoice',1,0);
+    $pdf->Cell(35,6,'no invoice',1,0);
     $pdf->Cell(27,6,'no plat',1,0);
     $pdf->Cell(25,6,'TANGGAL',1,0);
     $pdf->Cell(25,6,'kd barang',1,0);
-    $pdf->Cell(25,6,'qty',1,1);
+    $pdf->Cell(25,6,'qty',1,0);
+    $pdf->Cell(25,6,'nama barang',1,0);
+    $pdf->Cell(25,6,'total harga',1,1);
     $pdf->SetFont('Arial','',10);
     $tbl_service = $this->db->get('tbl_service')->result();
+    // $tbl_master_barang = $this->db->get('tbl_master_barang')->result();
     foreach ($tbl_service as $row){
         $pdf->Cell(35,6,$row->no_invoice,1,0);
         $pdf->Cell(27,6,$row->no_plat,1,0);
         $pdf->Cell(25,6,$row->tanggal,1,0);
          $pdf->Cell(25,6,$row->kd_barang,1,0); 
-         $pdf->Cell(25,6,$row->qty,1,1); 
+         $pdf->Cell(25,6,$row->qty,1,0); 
+         $pdf->Cell(25,6,$row->nama_barang,1,0); 
+         $pdf->Cell(25,6,$row->total,1,1);
   
 }
     $pdf->Output();

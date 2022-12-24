@@ -14,7 +14,7 @@
                     <tr>
                         <th>NO</th>
                         <th class="text-center">NAMA MEKANIK</th>
-                        <th>TANGGAL SERVICEK</th>
+                        <th>TANGGAL SERVICE</th>
                         <th>No. INVOICE</th>
                         <th class="text-center">NAMA CUSTOMER</th>
                         <th>JUMLAH GAJI</th>
