@@ -4,27 +4,28 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Transaksi service</h3>
+              <h3 class="box-title">Data Table Mekanik</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
             <!-- button add -->
             <?php
-                echo anchor('outcome/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
+                echo anchor('mekanik/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
             ?>
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>N0. INVOICE</th>
-                        <th>NAMA PELANGAN</th>
-                        <th>TANGGAL SERVICE</th>
-                        <th>NAMA BARANG</th>
-                        <th>QTY</th>
-                        <th>TOTAL HARGA</th>
+                        <!-- <th>FOTO</th> -->
+                        <th>NAMA MEKANIK</th>
+                        <th>BOD MEKANIK</th>
+                        <th>No. TELP</th>
+                        <th>ALAMAT</th>
                         <th>AKSI</th>
+                        <th>GAJI MEKANIK</th>
+
                     </tr>
                 </thead>
               </table>
@@ -46,7 +47,7 @@
 <script>
         $(document).ready(function() {
             var t = $('#mytable').DataTable( {
-                "ajax": '<?php echo site_url('income/data'); ?>',
+                 "ajax": '<?php echo site_url('service/data'); ?>',
                 "order": [[ 1, 'asc' ]],
                 "columns": [
                     {
@@ -55,39 +56,36 @@
                         class: 'text-center',
                         orderable: false,
                     },
-                    {
-                        data: 'no_invoice',
+                    // { 
+                    //     "data": "foto",
+                    //     "class": "text-center"
+                    // },
+                    { 
+                        data: 'nama_mekanik',
                         width: '150px',
-                        class: 'text-center'
                     },
                     {
-                        data: 'nama_customer',
-                    },
-                    { 
-                        data: 'tanggal',
-                        width: '150px',
-                        class: 'text-center'
-                    },
-                    { 
-                        data: 'nama_barang',
-                        width: '200px',
-                        class: 'text-center'
-                    },
-                    { 
-                        data: 'qty',
-                        width: '20px',
-                        class: 'text-center'
-                    },
-                    {
-                        data: "total",
+                        data: "bod",
                         width: '150px',
                         class: 'text-center',
-                        render: function ( data, type, row ) {
-                            return 'Rp. '+ data;
-                        }
+                    },
+                    {
+                        data: "telp",
+                        width: '150px',
+                        class: 'text-center'
+                    },
+                    {
+                        data: "alamat",
+                        width: '150px',
+                        class: 'text-center',
                     },
                     { 
                         data: 'aksi',
+                        width: '80px',
+                        class: 'text-center'
+                    },
+                    { 
+                        data: 'total',
                         width: '80px',
                         class: 'text-center'
                     },

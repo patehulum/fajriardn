@@ -42,9 +42,9 @@
 		{
 			$this->template->load('template', 'income/view');
 		}
-		function rupiah ($angka)
-		{$hasil="Rp" . number_format($angka,'2', ',','.');
+		// function rupiah ($angka)
+		// {$hasil="Rp" . number_format($angka,'2', ',','.');
 		
-		}
+		// }
 	}
 ?>

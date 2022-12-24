@@ -185,10 +185,14 @@
                   '</div>' +
                   '</div>' +
 
-                  '<label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Stock<span class="required">*</span></label>' +
-                  '<div class="col-md-3 col-sm-3 col-xs-12">' +
-                    '<div class="stock-na"></div>' +
-                  '</div>' +
+                  // '<label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Stock<span class="required">*</span></label>' +
+                  // '<div class="col-md-3 col-sm-3 col-xs-12">' +
+                  //   '<div class="stock-na"></div>' +
+                  // '</div>' +
+                  '<label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Stock<span class="required">*</span></label>'+
+                      '<div class="col-md-3 col-sm-3 col-xs-12">'+
+                           ' <div id="stock"></div>'+
+                     ' </div>'+
 
                 '</div>' +
 
@@ -232,7 +236,7 @@ function getqty(obj)
             data:{'id':id},
             success : function(html) {
                 $("#stock").html(html);
-                // var kelas   = $("#cbkelas").val();
+                
             }
         });
   }
