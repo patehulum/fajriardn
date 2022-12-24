@@ -22,8 +22,8 @@
                 </thead>
               </table>
             </div>
-            <div class="text-center" style="">
-                <a type="button" class="btn btn-success btn-report"  href="<?=base_url('gaji_mekanik/slip_gaji')?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i> Cetak Slip Gaji</a>
+            <div class="text-center" target="_blank">
+                <a type="button" target="_blank" class="btn btn-success btn-report" href="<?=base_url('gaji_mekanik/slip_gaji')?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i> Cetak Slip Gaji</a>
             </div>
             <br><br>
             <!-- /.box-body -->

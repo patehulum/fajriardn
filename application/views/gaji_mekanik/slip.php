@@ -9,7 +9,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <?php
-                echo form_open_multipart('gajipdf', 'role="form" class="form-horizontal"');
+                echo form_open_multipart('report/gajipdf', 'role="form" class="form-horizontal"');
             ?>
 
                 <div class="box-body">

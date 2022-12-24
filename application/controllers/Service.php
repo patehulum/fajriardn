@@ -37,7 +37,7 @@
 						'db' => 'no_invoice',
 						'dt' => 'aksi',
 						'formatter' => function($d) {
-							return anchor('service/detail/'.$d, '<i class="fa fa-eye" style="margin-right:5px; margin-left:15px"></i>').' 
+							return anchor('report/servicekeluar/'.$d, '<i class="fa fa-print" target="_blank" style="margin-right:5px; margin-left:15px"></i>').' 
 							'.anchor('service/delete/'.$d,'<i class="fa fa-times" style="color:red"></i>',array('onclick' => "return confirm('Do you want delete this record')") );
 					}
 		        )
