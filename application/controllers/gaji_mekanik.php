@@ -1,7 +1,5 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-	
-class gaji_mekanik extends CI_Controller
+<?php	
+	class gaji_mekanik extends CI_Controller
 	{
 		function __construct()
 		{
@@ -9,8 +7,7 @@ class gaji_mekanik extends CI_Controller
 			if( empty($this->session->userdata('username'))){
 				redirect(base_url("auth"));
 			}
-			//checkAksesModule();
-    		$this->load->library('fpdf.php');
+    		// $this->load->library('fpdf.php');
 			$this->load->library('ssp');
 			$this->load->model('model_mekanik');
 		}
