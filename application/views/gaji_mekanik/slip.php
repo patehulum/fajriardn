@@ -28,7 +28,7 @@
                       <label class="col-sm-2 control-label">Tanggal</label>
 
                       <div class="col-sm-5">
-                        <input type="date" name="nama_barang" class="form-control" placeholder="Masukkan Nama Barang">
+                        <input type="date" name="tanggal_service" class="form-control">
                       </div>
                   </div>
 
