@@ -69,7 +69,7 @@
 				$this->model_service->save();
 				redirect('service');
 			} else {
-                $data_id['hellow'] = date('dmy-hms') ;
+                $data_id['hellow'] = date('dmy-his') ;
                 // var_dump($data_id);
 				$this->template->load('template', 'service/add', $data_id);
 			}
@@ -84,11 +84,11 @@
 			$id_mekanikna = $this->input->post('id_mekanik');
 			$nama_barangna = $this->input->post('kd_barang');
 
-                $this->db->select('*');
-                $this->db->from('tbl_master_barang');
-                $this->db->where('kd_barang',"000");
-                $query = $this->db->get();
-                $barangnamana = $query->row()->nama_barang;
+			$this->db->select('*');
+			$this->db->from('tbl_master_barang');
+			$this->db->where('kd_barang',"000");
+			$query = $this->db->get();
+			$barangnamana = $query->row()->nama_barang;
 			
 
 			$data = array(

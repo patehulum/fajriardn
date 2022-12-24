@@ -35,7 +35,7 @@
                       <label class="col-sm-2 control-label">Tanggal Service</label>
 
                       <div class="col-sm-9">
-                        <input type='text' name="tanggal" class="form-control" placeholder="Tahun / Bulan / Tanggal">
+                        <input type='date' name="tanggal" class="form-control" placeholder="Tahun / Bulan / Tanggal">
                       </div>
                   </div>
                   

@@ -194,7 +194,7 @@
 			$kode_barang = $this->input->post('kd_barang');
 			$barangna = $this->input->post('nama_barang');
 			$jumlahna = $this->input->post('qty_in');
-			$tanggalna = date('y-m-d');
+			$tanggalna = date('Y-m-d');
 
 			$this->db->select('*');
 			$this->db->from('tbl_master_barang');
