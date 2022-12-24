@@ -84,7 +84,12 @@
 			$id_mekanikna = $this->input->post('id_mekanik');
 			$nama_barangna = $this->input->post('kd_barang');
 
-               
+                $this->db->select('*');
+                $this->db->from('tbl_master_barang');
+                $this->db->where('kd_barang',"000");
+                $query = $this->db->get();
+                $barangnamana = $query->row()->nama_barang;
+			
 
 			$data = array(
 				//tabel di database => name di form
@@ -96,7 +101,7 @@
 				'total' 	    => $biaya_service,
 				'keterangan' 	=> $this->input->post('keterangan'),
 				'id_mekanik' 	=> $id_mekanikna,
-				'nama_barang' 	=> "Barang Lain | Jasa Service",
+				'nama_barang' 	=> $barangnamana,
 			);
 			$this->db->insert("tbl_service",$data);
 
