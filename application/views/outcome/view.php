@@ -14,7 +14,7 @@
                     <tr>
                         <th>NO</th>
                         <th>TANGGAL PENGELUARAN</th>
-                        <th>KEPERLUAN</th>
+                        <th class="text-center">KEPERLUAN</th>
                         <th>JUMLAH</th>
                         <th>SALDO AWAL</th>
                         <th>SALDO AKHIR</th>
@@ -55,7 +55,6 @@
                     },
                     { 
                         data: 'keperluan',
-                        class: 'text-center'
                     },
                     { 
                         data: 'outcome_amount',

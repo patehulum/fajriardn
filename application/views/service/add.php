@@ -39,13 +39,13 @@
                       </div>
                   </div>
                   
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <label class="col-sm-2 control-label">Kode Jasa Service</label>
 
                       <div class="col-sm-9">
                         <input type="text" name="kd_service" class="form-control" placeholder="Masukkan kode jasa service">
                       </div>
-                  </div>
+                  </div> -->
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Keterangan Jasa Service</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2022 at 11:30 PM
+-- Generation Time: Dec 24, 2022 at 05:32 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -51,7 +51,8 @@ INSERT INTO `tabel_menu` (`id`, `nama_menu`, `link`, `icon`, `is_main_menu`) VAL
 (27, 'Pemasukan', 'income', 'fa fa-money', 3),
 (28, 'Pengeluaran', 'outcome', 'fa fa-usd', 3),
 (32, 'Barang Keluar', 'master_barang/out', 'fa fa-sign-out', 2),
-(33, 'Barang Masuk', 'master_barang/in', 'fa fa-truck', 2);
+(33, 'Barang Masuk', 'master_barang/in', 'fa fa-truck', 2),
+(35, 'Gaji Mekanik', 'gaji_mekanik', 'fa fa-money', 3);
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,12 @@ CREATE TABLE `tbl_barang_out` (
 INSERT INTO `tbl_barang_out` (`id_out`, `kd_barang`, `nama_barang`, `tanggal_out`, `invoice_out`, `qty_awal`, `qty_out`, `last_qty`) VALUES
 (3, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-18', 'INV-211222-021212', 5, 2, 3),
 (4, '5vv-423', 'knalpot bobokan mio', '2022-12-11', 'INV-211222-021211', 5, 2, 3),
-(5, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-11', 'INV-211222-021211', 3, 1, 2);
+(5, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-11', 'INV-211222-021211', 3, 1, 2),
+(6, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-22', 'INV-241222-041200', 9, 2, 7),
+(7, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-24', 'INV-241222-051246', 7, 3, 4),
+(8, '5vv-423', 'knalpot bobokan mio', '2022-12-24', 'INV-241222-051246', 13, 1, 12),
+(9, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-24', 'INV-241222-051207', 4, 2, 2),
+(10, '5vv-423', 'knalpot bobokan mio', '2022-12-24', 'INV-241222-051207', 12, 3, 9);
 
 -- --------------------------------------------------------
 
@@ -131,6 +137,30 @@ INSERT INTO `tbl_customer` (`id_customer`, `nama_customer`, `no_plat`, `alamat`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_gaji_mekanik`
+--
+
+CREATE TABLE `tbl_gaji_mekanik` (
+  `id_gaji` int(10) NOT NULL,
+  `id_mekanik` int(10) NOT NULL,
+  `nama_mekanik` varchar(100) NOT NULL,
+  `tanggal_service` date NOT NULL,
+  `no_invoice` varchar(50) NOT NULL,
+  `nama_cust` varchar(100) NOT NULL,
+  `jumlah_gaji` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_gaji_mekanik`
+--
+
+INSERT INTO `tbl_gaji_mekanik` (`id_gaji`, `id_mekanik`, `nama_mekanik`, `tanggal_service`, `no_invoice`, `nama_cust`, `jumlah_gaji`) VALUES
+(1, 4, 'Fajri', '2022-12-24', 'INV-241222-051246', 'Nop Al Nab Il', 60000),
+(2, 1, 'Patch', '2022-12-24', 'INV-241222-051207', 'Miki Miko', 60000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_income`
 --
 
@@ -149,7 +179,10 @@ CREATE TABLE `tbl_income` (
 --
 
 INSERT INTO `tbl_income` (`id_income`, `invoice_income`, `customer`, `income_amount`, `saldo_awal`, `saldo_akhir`, `tanggal_income`) VALUES
-(2, 'INV-211222-021211', 'Nop Al Nab Il', 1725000, 10000000, 11725000, '2022-12-11');
+(2, 'INV-211222-021211', 'Nop Al Nab Il', 1725000, 10000000, 11725000, '2022-12-11'),
+(3, 'INV-241222-041200', 'Wakcuy', 200000, 3574505, 3774505, '2022-12-22'),
+(4, 'INV-241222-051246', 'Nop Al Nab Il', 1050000, 3774505, 4824505, '2022-12-24'),
+(5, 'INV-241222-051207', 'Miki Miko', 2600000, 4764505, 7364505, '2022-12-24');
 
 -- --------------------------------------------------------
 
@@ -169,7 +202,7 @@ CREATE TABLE `tbl_info` (
 --
 
 INSERT INTO `tbl_info` (`nama_bengkel`, `alamat`, `telp`, `saldo`) VALUES
-('ZicSpeed', 'Kota Bekasi', 682187654, 3574505);
+('ZicSpeed', 'Kota Bekasi', 682187654, 7304505);
 
 -- --------------------------------------------------------
 
@@ -216,8 +249,8 @@ CREATE TABLE `tbl_master_barang` (
 INSERT INTO `tbl_master_barang` (`kd_barang`, `nama_barang`, `harga_barang`, `harga_jual`, `kuantitas`, `foto`) VALUES
 ('000', 'Barang Lain | Jasa Service', 0, 0, 0, 'IMG_3112.jpg'),
 ('5nw-76da', 'Vanbelt MIO Sporty BIG ', 63000, 100000, 5, 'wallpaper1.jpg'),
-('5tl-423', 'Stang Mio Sporty 2006', 630099, 50000, 9, 'Untitled2.png'),
-('5vv-423', 'knalpot bobokan mio', 500000, 800000, 13, 'impreza.jpg'),
+('5tl-423', 'Stang Mio Sporty 2006', 630099, 50000, 2, 'Untitled2.png'),
+('5vv-423', 'knalpot bobokan mio', 500000, 800000, 9, 'impreza.jpg'),
 ('5yp-bys', 'Tangki Byson', 200000, 250000, 0, 'baleno.jpg');
 
 -- --------------------------------------------------------
@@ -263,9 +296,9 @@ CREATE TABLE `tbl_outcome` (
 --
 
 INSERT INTO `tbl_outcome` (`id_outcome`, `tanggal_outcome`, `keperluan`, `outcome_amount`, `saldo_awal`, `saldo_akhir`) VALUES
-(1, '2022-12-22', '3', 1890297, 11725000, 9834703),
-(2, '2022-12-22', '10', 5000000, 9834703, 4834703),
-(3, '2022-12-22', 'Beli Stang Mio Sporty 2006 2 Pcs', 1260198, 4834703, 3574505);
+(3, '2022-12-22', 'Beli Stang Mio Sporty 2006 2 Pcs', 1260198, 4834703, 3574505),
+(4, '2022-12-24', 'Bayar Jasa Service ke Fajri sejumlah RP.60000', 60000, 4824505, 4764505),
+(5, '2022-12-24', 'Bayar Jasa Service ke Patch sejumlah RP.60000', 60000, 7364505, 7304505);
 
 -- --------------------------------------------------------
 
@@ -281,19 +314,25 @@ CREATE TABLE `tbl_service` (
   `kd_barang` varchar(100) NOT NULL,
   `qty` int(10) NOT NULL,
   `total` int(10) NOT NULL,
-  `keterangan` text DEFAULT NULL
+  `keterangan` text DEFAULT NULL,
+  `id_mekanik` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_service`
 --
 
-INSERT INTO `tbl_service` (`id_service`, `no_invoice`, `no_plat`, `tanggal`, `kd_barang`, `qty`, `total`, `keterangan`) VALUES
-(60, 'INV-211222-021212', 'BD 9808 K', '2022-12-18', '000', 1, 100000, '- benerin otak'),
-(61, 'INV-211222-021212', 'BD 9808 K', '2022-12-18', '5tl-423', 2, 100000, NULL),
-(62, 'INV-211222-021211', 'BD 9808 K', '2022-12-11', '000', 1, 75000, '- oadak'),
-(63, 'INV-211222-021211', 'BD 9808 K', '2022-12-11', '5vv-423', 2, 1600000, NULL),
-(64, 'INV-211222-021211', 'BD 9808 K', '2022-12-11', '5tl-423', 1, 50000, NULL);
+INSERT INTO `tbl_service` (`id_service`, `no_invoice`, `no_plat`, `tanggal`, `kd_barang`, `qty`, `total`, `keterangan`, `id_mekanik`) VALUES
+(60, 'INV-211222-021212', 'BD 9808 K', '2022-12-18', '000', 1, 100000, '- benerin otak', 0),
+(61, 'INV-211222-021212', 'BD 9808 K', '2022-12-18', '5tl-423', 2, 100000, NULL, 0),
+(62, 'INV-211222-021211', 'BD 9808 K', '2022-12-11', '000', 1, 75000, '- oadak', 0),
+(63, 'INV-211222-021211', 'BD 9808 K', '2022-12-11', '5vv-423', 2, 1600000, NULL, 0),
+(64, 'INV-211222-021211', 'BD 9808 K', '2022-12-11', '5tl-423', 1, 50000, NULL, 0),
+(65, 'INV-241222-041200', 'B 3452 TMR', '2022-12-22', '000', 1, 100000, '- jasa benerin aki', 1),
+(66, 'INV-241222-041200', 'B 3452 TMR', '2022-12-22', '5tl-423', 2, 100000, NULL, NULL),
+(71, 'INV-241222-051207', 'OP 4547 PO', '2022-12-24', '000', 1, 100000, '- benerin ban dalem', 1),
+(72, 'INV-241222-051207', 'OP 4547 PO', '2022-12-24', '5tl-423', 2, 100000, NULL, NULL),
+(73, 'INV-241222-051207', 'OP 4547 PO', '2022-12-24', '5vv-423', 3, 2400000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -457,6 +496,12 @@ ALTER TABLE `tbl_customer`
   ADD PRIMARY KEY (`id_customer`);
 
 --
+-- Indexes for table `tbl_gaji_mekanik`
+--
+ALTER TABLE `tbl_gaji_mekanik`
+  ADD PRIMARY KEY (`id_gaji`);
+
+--
 -- Indexes for table `tbl_income`
 --
 ALTER TABLE `tbl_income`
@@ -512,7 +557,7 @@ ALTER TABLE `tbl_user_rule`
 -- AUTO_INCREMENT for table `tabel_menu`
 --
 ALTER TABLE `tabel_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_barang_in`
@@ -524,7 +569,7 @@ ALTER TABLE `tbl_barang_in`
 -- AUTO_INCREMENT for table `tbl_barang_out`
 --
 ALTER TABLE `tbl_barang_out`
-  MODIFY `id_out` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_out` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_customer`
@@ -533,10 +578,16 @@ ALTER TABLE `tbl_customer`
   MODIFY `id_customer` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `tbl_gaji_mekanik`
+--
+ALTER TABLE `tbl_gaji_mekanik`
+  MODIFY `id_gaji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbl_income`
 --
 ALTER TABLE `tbl_income`
-  MODIFY `id_income` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_income` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_level_user`
@@ -554,13 +605,13 @@ ALTER TABLE `tbl_mekanik`
 -- AUTO_INCREMENT for table `tbl_outcome`
 --
 ALTER TABLE `tbl_outcome`
-  MODIFY `id_outcome` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_outcome` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_service`
 --
 ALTER TABLE `tbl_service`
-  MODIFY `id_service` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_service` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

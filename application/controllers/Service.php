@@ -81,21 +81,49 @@
 			$platna = $this->input->post('no_plat');
 			$tanggalna = $this->input->post('tanggal');
 			$biaya_service = $this->input->post('biaya_service');
+			$id_mekanikna = $this->input->post('id_mekanik');
 
 			$data = array(
 				//tabel di database => name di form
 				'no_invoice'	=> $invoicena,
 				'no_plat'		=> $platna,
 				'tanggal'	    => $tanggalna,
-				'kd_barang' 	=> $this->input->post('kd_service'),
+				'kd_barang' 	=> "000",
 				'qty' 	        => 1,
 				'total' 	    => $biaya_service,
 				'keterangan' 	=> $this->input->post('keterangan'),
+				'id_mekanik' 	=> $id_mekanikna,
 			);
 			$this->db->insert("tbl_service",$data);
 
+			//get nama mekanik bu id_mekanik
+			$this->db->select('*');
+			$this->db->from('tbl_mekanik');
+			$this->db->where('id_mekanik', $id_mekanikna);
+			$query = $this->db->get();
+			$namamekanikna = $query->row()->nama_mekanik;
+
+			//get nama customer
+			$this->db->select('*');
+			$this->db->from('tbl_customer');
+			$this->db->where('no_plat', $platna);
+			$query = $this->db->get();
+			$namaorang = $query->row()->nama_customer;
+
+			$persenan_gaji = 60 * $biaya_service / 100;
+
+			//add table gaji mekanik
+			$gaji_mekanik = array(
+				'id_mekanik'		=> $id_mekanikna,
+				'nama_mekanik'		=> $namamekanikna,
+				'tanggal_service'	=> $tanggalna,
+				'no_invoice'		=> $invoicena,
+				'nama_cust'			=> $namaorang,
+				'jumlah_gaji'		=> $persenan_gaji,
+			);
+			$this->db->insert("tbl_gaji_mekanik",$gaji_mekanik);
+
 			$income = $biaya_service;
-            
             $jumlah = count($this->input->post('kd_barang'));
             //print_r($jumlah);die();
             for($i=0;$i<$jumlah;$i++){
@@ -143,12 +171,6 @@
             }
 
 			$this->db->select('*');
-			$this->db->from('tbl_customer');
-			$this->db->where('no_plat', $platna);
-			$query = $this->db->get();
-			$namaorang = $query->row()->nama_customer;
-
-			$this->db->select('*');
 			$this->db->from('tbl_info');
 			$query = $this->db->get();
 			$saldokarang = $query->row()->saldo;
@@ -166,6 +188,28 @@
 			$this->db->insert("tbl_income",$pemasukan);
 		
 			$this->db->set('saldo', $saldo);
+			$this->db->where('nama_bengkel', 'ZicSpeed');
+			$this->db->update('tbl_info');
+
+			$this->db->select('*');
+			$this->db->from('tbl_info');
+			$query = $this->db->get();
+			$saldo_baru = $query->row()->saldo;
+
+			$saldo_terakhir = $saldo_baru - $persenan_gaji;
+
+			//tambah data pengeluaran
+			$outcome = array (
+				'tanggal_outcome'	=> $tanggalna,
+				'keperluan'			=> "Bayar Jasa Service ke $namamekanikna sejumlah RP.$persenan_gaji",
+				'outcome_amount'	=> $persenan_gaji,
+				'saldo_awal' 		=> $saldo_baru,
+				'saldo_akhir' 	  	=> $saldo_terakhir,
+			);
+			$this->db->insert("tbl_outcome",$outcome);
+			
+			//set saldo setelah pengeluaran
+			$this->db->set('saldo', $saldo_terakhir);
 			$this->db->where('nama_bengkel', 'ZicSpeed');
 			$this->db->update('tbl_info');
 
