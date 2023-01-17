@@ -71,10 +71,10 @@
 		function edit()
 		{
 			if (isset($_POST['submit'])) {
-				$this->model_customer->update();
+				$this->model_paket_service->update();
 				redirect('paket_service');
 			} else {
-				$id_customer 		= $this->uri->segment(3);
+				$id_paket_service 		= $this->uri->segment(3);
 				$data['paket_service'] 	= $this->db->get_where('tbl_paket_service', array('id_paket_service' => $id_paket_service))->row_array();
 				$this->template->load('template', 'paket_service/edit', $data);
 			}

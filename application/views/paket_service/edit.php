@@ -9,30 +9,30 @@
             <!-- /.box-header -->
             <!-- form start -->
             <?php
-                echo form_open_multipart('mekanik/edit', 'role="form" class="form-horizontal"');
+                echo form_open_multipart('paket_service/edit', 'role="form" class="form-horizontal"');
             ?>
 
                 <div class="box-body">
 
-                  <input type="hidden" value="<?php echo $mekanik['id_mekanik']; ?>" name="id_mekanik" class="form-control">
+                  <input type="hidden" value="<?php echo $paket_service['id_paket_service']; ?>" name="id_paket_service" class="form-control">
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Nama Mekanik</label>
+                      <label class="col-sm-2 control-label">Nama Paket Service</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $mekanik['nama_mekanik']; ?>" name="nama_mekanik" class="form-control" placeholder="Masukkan Nama Mekanik">
+                        <input type="text" value="<?php echo $paket_service['nama_paket_service']; ?>" name="nama_paket_service" class="form-control" placeholder="Masukkan Nama Mekanik">
                       </div>
                   </div>
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
+                      <label class="col-sm-2 control-label">Harga Paket Service</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $mekanik['bod']; ?>" name="bod" class="form-control" placeholder="Masukkan Tempat, Tanggal Lahir">
+                        <input type="text" value="<?php echo $paket_service['harga_paket_service']; ?>" name="harga_paket_service" class="form-control" placeholder="Masukkan Tempat, Tanggal Lahir">
                       </div>
                   </div>
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <label class="col-sm-2 control-label">No Telp</label>
 
                       <div class="col-sm-9">
@@ -55,7 +55,7 @@
                         <input type="file" name="userfile">
                         <img src="<?php echo base_url()."/uploads/user/mekanik/".$mekanik['foto']; ?>" width="150px">
                       </div>
-                  </div>
+                  </div> -->
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label"></label>
@@ -66,7 +66,7 @@
 
                       <div class="col-sm-1">
                         <?php
-                          echo anchor('mekanik', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
+                          echo anchor('paket_service', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
                         ?>
                       </div>
                   </div>

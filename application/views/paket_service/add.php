@@ -71,7 +71,7 @@
 
                       <div class="col-sm-1">
                         <?php
-                          echo anchor('cust', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
+                          echo anchor('paket_service', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
                         ?>
                       </div>
                   </div>
