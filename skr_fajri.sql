@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2023 at 05:56 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 5.6.40
+-- Generation Time: Jan 17, 2023 at 09:00 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -105,7 +104,14 @@ CREATE TABLE `tbl_barang_out` (
 INSERT INTO `tbl_barang_out` (`id_out`, `kd_barang`, `nama_barang`, `tanggal_out`, `invoice_out`, `qty_awal`, `qty_out`, `last_qty`) VALUES
 (24, '5vv-423', 'knalpot bobokan mio', '2022-12-01', 'INV-251222-023939', 5, 1, 4),
 (25, '5vv-423', 'knalpot bobokan mio', '2022-12-27', 'INV-271222-013551', 4, 1, 3),
-(26, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-27', 'INV-271222-013551', 13, 1, 12);
+(26, '5tl-423', 'Stang Mio Sporty 2006', '2022-12-27', 'INV-271222-013551', 13, 1, 12),
+(27, '5tl-423', 'Stang Mio Sporty 2006', '2023-01-18', 'INV-180123-123623', 12, 1, 11),
+(28, '5tl-423', 'Stang Mio Sporty 2006', '2023-01-18', 'INV-180123-010338', 11, 1, 10),
+(29, '5tl-423', 'Stang Mio Sporty 2006', '2023-01-18', 'INV-180123-022639', 10, 1, 9),
+(30, '5tl-423', 'Stang Mio Sporty 2006', '2023-01-18', 'INV-180123-022904', 9, 2, 7),
+(31, '5tl-423', 'Stang Mio Sporty 2006', '2023-01-18', 'INV-180123-023113', 7, 1, 6),
+(32, '5vv-423', 'knalpot bobokan mio', '2023-01-18', 'INV-180123-023113', 3, 1, 2),
+(33, '5tl-423', 'Stang Mio Sporty 2006', '2023-01-19', 'INV-180123-025754', 6, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -134,7 +140,7 @@ INSERT INTO `tbl_customer` (`id_customer`, `nama_customer`, `no_plat`, `alamat`,
 (5, 'bu andiani', 'B 1234 RFK', 'JL DEPOK', '089323212', 'Mio', 2010),
 (6, 'tuti', 'B 1234 RFK', 'Jl JKARTA', '0897878788', 'mio', 2005),
 (7, 'iya', 'B 19 OK', 'JL. Bekasi Timur', '087712213342', 'NSR', 1999),
-(9, 'bu andiani2', 'B 1234 RFS', 'jl jl', '08983912312', '', 0),
+(9, 'bu andiani2', 'B 1234 RFS', 'jl jl', '08983912312', 'Vixion Ngebut', 98),
 (10, 'tuti2', 'B 1234 RFKS', 'JL. Bekasi Timur', '087712213342', '', 0),
 (11, 'bu andiani3', 'B 1234 RFK2', 'JL. Bekasi Timur', '087712213342', 'Mio', 2312);
 
@@ -160,7 +166,14 @@ CREATE TABLE `tbl_gaji_mekanik` (
 
 INSERT INTO `tbl_gaji_mekanik` (`id_gaji`, `id_mekanik`, `nama_mekanik`, `tanggal_service`, `no_invoice`, `nama_cust`, `jumlah_gaji`) VALUES
 (14, 1, 'Aldi', '2022-12-01', 'INV-251222-023939', 'Nop Al Nab Il', 60000),
-(15, 4, 'Fajri', '2022-12-27', 'INV-271222-013551', 'bu andiani', 60000);
+(15, 4, 'Fajri', '2022-12-27', 'INV-271222-013551', 'bu andiani', 60000),
+(16, 1, 'Aldi', '2023-01-18', 'INV-180123-123623', 'Miki Miko', 54000),
+(17, 1, 'Aldi', '2023-01-18', 'INV-180123-010338', 'Nop Al Nab Il', 60000),
+(18, 4, 'Fajri', '2023-01-18', 'INV-180123-022639', 'Wakcuy', 6000),
+(19, 4, 'Fajri', '2023-01-18', 'INV-180123-022904', 'bu andiani3', 33000),
+(20, 1, 'Aldi', '2023-01-18', 'INV-180123-023038', 'tuti2', 6000),
+(21, 1, 'Aldi', '2023-01-18', 'INV-180123-023113', 'tuti2', 6000),
+(22, 1, 'Aldi', '2023-01-19', 'INV-180123-025754', 'Nop Al Nab Il', 6000);
 
 -- --------------------------------------------------------
 
@@ -184,7 +197,13 @@ CREATE TABLE `tbl_income` (
 
 INSERT INTO `tbl_income` (`id_income`, `invoice_income`, `customer`, `income_amount`, `saldo_awal`, `saldo_akhir`, `tanggal_income`) VALUES
 (1, 'INV-251222-023939', 'Nop Al Nab Il', 900000, 10000000, 10900000, '2022-12-01'),
-(2, 'INV-271222-013551', 'bu andiani', 980000, 9560000, 10540000, '2022-12-27');
+(2, 'INV-271222-013551', 'bu andiani', 980000, 9560000, 10540000, '2022-12-27'),
+(3, 'INV-180123-123623', 'Miki Miko', 170000, 10480000, 10650000, '2023-01-18'),
+(4, 'INV-180123-010338', 'Nop Al Nab Il', 180000, 10596000, 10776000, '2023-01-18'),
+(5, 'INV-180123-022639', 'Wakcuy', 90000, 10716000, 10806000, '2023-01-18'),
+(6, 'INV-180123-022904', 'bu andiani3', 215000, 10800000, 11015000, '2023-01-18'),
+(7, 'INV-180123-023113', 'tuti2', 890000, 10982000, 11872000, '2023-01-18'),
+(8, 'INV-180123-025754', 'Nop Al Nab Il', 90000, 11866000, 11956000, '2023-01-19');
 
 -- --------------------------------------------------------
 
@@ -204,7 +223,7 @@ CREATE TABLE `tbl_info` (
 --
 
 INSERT INTO `tbl_info` (`nama_bengkel`, `alamat`, `telp`, `saldo`) VALUES
-('ZicSpeed', 'Kota Bekasi', 682187654, 10480000);
+('ZicSpeed', 'Kota Bekasi', 682187654, 11950000);
 
 -- --------------------------------------------------------
 
@@ -245,10 +264,9 @@ CREATE TABLE `tbl_master_barang` (
 --
 
 INSERT INTO `tbl_master_barang` (`kd_barang`, `nama_barang`, `harga_barang`, `harga_jual`, `kuantitas`, `foto`) VALUES
-('000', 'Barang Lain | Jasa Service', 0, 0, 0, 'IMG_3112.jpg'),
-('5nw-76da', 'Vanbelt MIO Sporty BIG ', 63000, 100000, 25, 'wallpaper1.jpg'),
-('5tl-423', 'Stang Mio Sporty 2006', 63000, 80000, 12, 'Untitled2.png'),
-('5vv-423', 'knalpot bobokan mio', 500000, 800000, 3, 'impreza.jpg'),
+('5nw-76da', 'Vanbelt MIO Sporty BIG G', 63000, 100000, 25, 'wallpaper1.jpg'),
+('5tl-423', 'Stang Mio Sporty 2006', 63000, 80000, 5, 'Untitled2.png'),
+('5vv-423', 'knalpot bobokan mio', 500000, 800000, 2, 'impreza.jpg'),
 ('5yp-bys', 'Tangki Byson', 200000, 250000, 10, 'baleno.jpg'),
 ('KW6SP', 'Bearing Nsr SP', 65000, 95000, 10, 'nsr_sp_bearing.jpg');
 
@@ -298,7 +316,13 @@ INSERT INTO `tbl_outcome` (`id_outcome`, `tanggal_outcome`, `keperluan`, `outcom
 (1, '2022-12-01', 'Bayar Jasa Service ke Aldi sejumlah RP.60000', 60000, 10900000, 10840000),
 (2, '2022-12-25', 'Beli Stang Mio Sporty 2006 10 Pcs', 630000, 10840000, 10210000),
 (3, '2022-12-25', 'Beli Bearing Nsr SP 10 Pcs', 650000, 10210000, 9560000),
-(4, '2022-12-27', 'Bayar Jasa Service ke Fajri sejumlah RP.60000', 60000, 10540000, 10480000);
+(4, '2022-12-27', 'Bayar Jasa Service ke Fajri sejumlah RP.60000', 60000, 10540000, 10480000),
+(5, '2023-01-18', 'Bayar Jasa Service ke Aldi sejumlah RP.54000', 54000, 10650000, 10596000),
+(6, '2023-01-18', 'Bayar Jasa Service ke Aldi sejumlah RP.60000', 60000, 10776000, 10716000),
+(7, '2023-01-18', 'Bayar Jasa Service ke Fajri sejumlah RP.6000', 6000, 10806000, 10800000),
+(8, '2023-01-18', 'Bayar Jasa Service ke Fajri sejumlah RP.33000', 33000, 11015000, 10982000),
+(9, '2023-01-18', 'Bayar Jasa Service ke Aldi sejumlah RP.6000', 6000, 11872000, 11866000),
+(10, '2023-01-19', 'Bayar Jasa Service ke Aldi sejumlah RP.6000', 6000, 11956000, 11950000);
 
 -- --------------------------------------------------------
 
@@ -318,7 +342,7 @@ CREATE TABLE `tbl_paket_service` (
 
 INSERT INTO `tbl_paket_service` (`id_paket_service`, `nama_paket_service`, `harga_paket_service`) VALUES
 (2, 'Service Ringan', 10000),
-(3, 'Tidak Paket Service', 0);
+(4, 'Non Paket', 0);
 
 -- --------------------------------------------------------
 
@@ -334,7 +358,7 @@ CREATE TABLE `tbl_service` (
   `kd_barang` varchar(100) NOT NULL,
   `qty` int(10) NOT NULL,
   `total` int(10) NOT NULL,
-  `keterangan` text,
+  `keterangan` text DEFAULT NULL,
   `id_mekanik` int(10) DEFAULT NULL,
   `nama_barang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -348,7 +372,21 @@ INSERT INTO `tbl_service` (`id_service`, `no_invoice`, `no_plat`, `tanggal`, `kd
 (99, 'INV-251222-023939', 'BD 9808 K', '2022-12-01', '5vv-423', 1, 800000, NULL, NULL, 'knalpot bobokan mio'),
 (100, 'INV-271222-013551', 'B 1234 RFK', '2022-12-27', '000', 1, 100000, 'service knalpot', 4, 'Barang Lain | Jasa Service'),
 (101, 'INV-271222-013551', 'B 1234 RFK', '2022-12-27', '5vv-423', 1, 800000, NULL, NULL, 'knalpot bobokan mio'),
-(102, 'INV-271222-013551', 'B 1234 RFK', '2022-12-27', '5tl-423', 1, 80000, NULL, NULL, 'Stang Mio Sporty 2006');
+(102, 'INV-271222-013551', 'B 1234 RFK', '2022-12-27', '5tl-423', 1, 80000, NULL, NULL, 'Stang Mio Sporty 2006'),
+(103, 'INV-180123-123623', 'OP 4547 PO', '2023-01-18', '000', 1, 90000, 'adada ada', 1, 'Barang Lain | Jasa Service'),
+(104, 'INV-180123-123623', 'OP 4547 PO', '2023-01-18', '5tl-423', 1, 80000, NULL, NULL, 'Stang Mio Sporty 2006'),
+(105, 'INV-180123-010338', 'BD 9808 K', '2023-01-18', '000', 1, 100000, 'ASDKSADSAK\r\nDSAKDSAKSAK\r\nKDSAKDSAK', 1, 'Barang Lain | Jasa Service'),
+(106, 'INV-180123-010338', 'BD 9808 K', '2023-01-18', '5tl-423', 1, 80000, NULL, NULL, 'Stang Mio Sporty 2006'),
+(107, 'INV-180123-022639', 'B 3452 TMR', '2023-01-18', '000', 1, 10000, '- Borap ', 4, 'Biaya jasa service'),
+(108, 'INV-180123-022639', 'B 3452 TMR', '2023-01-18', '5tl-423', 1, 80000, NULL, NULL, 'Stang Mio Sporty 2006'),
+(109, 'INV-180123-022904', 'B 1234 RFK2', '2023-01-18', '000', 1, 55000, ' test aja', 4, 'Biaya jasa service'),
+(110, 'INV-180123-022904', 'B 1234 RFK2', '2023-01-18', '5tl-423', 2, 160000, NULL, NULL, 'Stang Mio Sporty 2006'),
+(111, 'INV-180123-023038', 'B 1234 RFKS', '2023-01-18', '000', 1, 10000, 'malam malam', 1, 'Biaya jasa service'),
+(112, 'INV-180123-023113', 'B 1234 RFKS', '2023-01-18', '000', 1, 10000, 'malam malam', 1, 'Biaya jasa service'),
+(113, 'INV-180123-023113', 'B 1234 RFKS', '2023-01-18', '5tl-423', 1, 80000, NULL, NULL, 'Stang Mio Sporty 2006'),
+(114, 'INV-180123-023113', 'B 1234 RFKS', '2023-01-18', '5vv-423', 1, 800000, NULL, NULL, 'knalpot bobokan mio'),
+(115, 'INV-180123-025754', 'BD 9808 K', '2023-01-19', '000', 1, 10000, '-ringan bener', 1, 'Service Ringan'),
+(116, 'INV-180123-025754', 'BD 9808 K', '2023-01-19', '5tl-423', 1, 80000, NULL, NULL, 'Stang Mio Sporty 2006');
 
 -- --------------------------------------------------------
 
@@ -451,7 +489,7 @@ CREATE TABLE `view_user` (
 --
 DROP TABLE IF EXISTS `view_service`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_service`  AS  select `ts`.`id_service` AS `id_service`,`ts`.`no_invoice` AS `no_invoice`,`ts`.`no_plat` AS `no_plat`,`ts`.`tanggal` AS `tanggal`,`ts`.`kd_barang` AS `kd_barang`,`ts`.`qty` AS `qty`,`ts`.`total` AS `total`,`ts`.`keterangan` AS `keterangan`,`tc`.`nama_customer` AS `nama_customer`,`tb`.`nama_barang` AS `nama_barang` from ((`tbl_service` `ts` join `tbl_customer` `tc` on((`tc`.`no_plat` = `ts`.`no_plat`))) join `tbl_master_barang` `tb` on((`tb`.`kd_barang` = `ts`.`kd_barang`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_service`  AS SELECT `ts`.`id_service` AS `id_service`, `ts`.`no_invoice` AS `no_invoice`, `ts`.`no_plat` AS `no_plat`, `ts`.`tanggal` AS `tanggal`, `ts`.`kd_barang` AS `kd_barang`, `ts`.`qty` AS `qty`, `ts`.`total` AS `total`, `ts`.`keterangan` AS `keterangan`, `tc`.`nama_customer` AS `nama_customer`, `tb`.`nama_barang` AS `nama_barang` FROM ((`tbl_service` `ts` join `tbl_customer` `tc` on(`tc`.`no_plat` = `ts`.`no_plat`)) join `tbl_master_barang` `tb` on(`tb`.`kd_barang` = `ts`.`kd_barang`))  ;
 
 -- --------------------------------------------------------
 
@@ -460,7 +498,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_user`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_user`  AS  select `tu`.`id_user` AS `id_user`,`tu`.`nama_lengkap` AS `nama_lengkap`,`tu`.`username` AS `username`,`tu`.`password` AS `password`,`tu`.`id_level_user` AS `id_level_user`,`tu`.`foto` AS `foto`,`tlu`.`nama_level` AS `nama_level` from (`tbl_user` `tu` join `tbl_level_user` `tlu`) where (`tu`.`id_level_user` = `tlu`.`id_level_user`) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_user`  AS SELECT `tu`.`id_user` AS `id_user`, `tu`.`nama_lengkap` AS `nama_lengkap`, `tu`.`username` AS `username`, `tu`.`password` AS `password`, `tu`.`id_level_user` AS `id_level_user`, `tu`.`foto` AS `foto`, `tlu`.`nama_level` AS `nama_level` FROM (`tbl_user` `tu` join `tbl_level_user` `tlu`) WHERE `tu`.`id_level_user` = `tlu`.`id_level_user``id_level_user`  ;
 
 --
 -- Indexes for dumped tables
@@ -570,7 +608,7 @@ ALTER TABLE `tbl_barang_in`
 -- AUTO_INCREMENT for table `tbl_barang_out`
 --
 ALTER TABLE `tbl_barang_out`
-  MODIFY `id_out` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_out` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tbl_customer`
@@ -582,13 +620,13 @@ ALTER TABLE `tbl_customer`
 -- AUTO_INCREMENT for table `tbl_gaji_mekanik`
 --
 ALTER TABLE `tbl_gaji_mekanik`
-  MODIFY `id_gaji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_gaji` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_income`
 --
 ALTER TABLE `tbl_income`
-  MODIFY `id_income` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_income` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_level_user`
@@ -606,19 +644,19 @@ ALTER TABLE `tbl_mekanik`
 -- AUTO_INCREMENT for table `tbl_outcome`
 --
 ALTER TABLE `tbl_outcome`
-  MODIFY `id_outcome` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_outcome` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_paket_service`
 --
 ALTER TABLE `tbl_paket_service`
-  MODIFY `id_paket_service` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_paket_service` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_service`
 --
 ALTER TABLE `tbl_service`
-  MODIFY `id_service` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id_service` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
