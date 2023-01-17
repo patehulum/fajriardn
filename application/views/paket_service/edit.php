@@ -20,7 +20,7 @@
                       <label class="col-sm-2 control-label">Nama Paket Service</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $paket_service['nama_paket_service']; ?>" name="nama_paket_service" class="form-control" placeholder="Masukkan Nama Mekanik">
+                        <input type="text" value="<?php echo $paket_service['nama_paket_service']; ?>" name="nama_paket_service" class="form-control" placeholder="Masukkan Nama Paket Service" required>
                       </div>
                   </div>
 
@@ -28,7 +28,7 @@
                       <label class="col-sm-2 control-label">Harga Paket Service</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $paket_service['harga_paket_service']; ?>" name="harga_paket_service" class="form-control" placeholder="Masukkan Tempat, Tanggal Lahir">
+                        <input type="text" value="<?php echo $paket_service['harga_paket_service']; ?>" name="harga_paket_service" class="form-control" placeholder="Masukkan Harga Paket Service" required>
                       </div>
                   </div>
 

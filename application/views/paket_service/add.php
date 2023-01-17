@@ -18,7 +18,7 @@
                       <label class="col-sm-2 control-label">Nama Paket Service</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="nama_paket_service" class="form-control" placeholder="Masukkan nama paket service" required>
+                        <input type="text" name="nama_paket_service" class="form-control" placeholder="Masukkan Nama Paket Service" required>
                       </div>
                   </div>
 
