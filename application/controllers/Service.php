@@ -103,15 +103,14 @@
 			$biaya_service = $this->input->post('biaya_service');
 			$id_mekanikna = $this->input->post('id_mekanik');
 			$nama_barangna = $this->input->post('kd_barang');
+			$id_paket_service = $this->input->post('id_paket_service');
 
-			// $this->db->select('*');
-			// $this->db->from('tbl_master_barang');
-			// $this->db->where('kd_barang',"000");
-			// $query = $this->db->get();
+			$this->db->select('*');
+			$this->db->from('tbl_paket_service');
+			$this->db->where('id_paket_service',$id_paket_service);
+			$query = $this->db->get();
 
-			// $barangnamana = $query->row()->nama_barang;
-			$barangnamana = "Biaya jasa service";
-			
+			$barangnamana = $query->row()->nama_paket_service;			
 
 			$data = array(
 				//tabel di database => name di form
