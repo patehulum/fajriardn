@@ -4,46 +4,45 @@
 
           <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Form Edit Data Customer</h3>
+                <h3 class="box-title">Form Tambah Paket Service</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <?php
-                echo form_open_multipart('cust/edit', 'role="form" class="form-horizontal"');
+                echo form_open_multipart('paket_service/add', 'role="form" class="form-horizontal"');
             ?>
 
                 <div class="box-body">
 
-                  
-
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">Nama Customer</label>
+                      <label class="col-sm-2 control-label">Nama Paket Service</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $customer['nama_customer']; ?>" name="nama_customer" class="form-control" placeholder="Masukkan Nama Customer">
+                        <input type="text" name="nama_paket_service" class="form-control" placeholder="Masukkan nama paket service" required>
                       </div>
                   </div>
 
                   <div class="form-group">
-                      <label class="col-sm-2 control-label">No. Plat Kendaraan</label>
+                      <label class="col-sm-2 control-label">Harga Paket Service</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $customer['no_plat']; ?>" name="no_plat" class="form-control" placeholder="Masukkan Nomer Plat Kendaraan">
+                        <input type="text" name="harga_paket_service" class="form-control" placeholder="Masukkan Harga Paket Service" required>
                       </div>
                   </div>
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <label class="col-sm-2 control-label">Jenis Kendaraan</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $customer['jenis_kendaraan']; ?>" name="jenis_kendaraan" class="form-control" placeholder="Masukkan Harga Barang">
+                        <input type="text" name="jenis_kendaraan" class="form-control" placeholder="Masukkan Jenis Kendaraan" required>
                       </div>
                   </div>
+
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Tahun Kendaraan</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $customer['th_kendaraan']; ?>" name="th_kendaraan" class="form-control" placeholder="Masukkan Harga Barang">
+                        <input type="text" name="th_kendaraan" class="form-control" placeholder="Masukkan Tahun Kendaraan" required>
                       </div>
                   </div>
 
@@ -51,7 +50,7 @@
                       <label class="col-sm-2 control-label">Alamat</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $customer['alamat']; ?>" name="alamat" class="form-control" placeholder="Masukkan Alamat">
+                        <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat" required>
                       </div>
                   </div>
 
@@ -59,9 +58,9 @@
                       <label class="col-sm-2 control-label">No. Handphone</label>
 
                       <div class="col-sm-9">
-                        <input type="text" value="<?php echo $customer['handphone']; ?>" name="handphone" class="form-control" placeholder="Masukkan No. Handphone">
+                        <input type="text" name="handphone" class="form-control" placeholder="Masukkan Nomer Handphone" required>
                       </div>
-                  </div>
+                  </div> -->
 
                   <div class="form-group">
                       <label class="col-sm-2 control-label"></label>

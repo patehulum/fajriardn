@@ -18,7 +18,7 @@
                       <label class="col-sm-2 control-label">Nama Mekanik</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="nama_mekanik" class="form-control" placeholder="Masukkan nama mekanik">
+                        <input type="text" name="nama_mekanik" class="form-control" placeholder="Masukkan nama mekanik" required>
                       </div>
                   </div>
 
@@ -26,7 +26,7 @@
                       <label class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="bod" class="form-control" placeholder="Masukkan Tempat, tanggal lahir">
+                        <input type="text" name="bod" class="form-control" placeholder="Masukkan Tempat, tanggal lahir" required>
                       </div>
                   </div>
 
@@ -34,7 +34,7 @@
                       <label class="col-sm-2 control-label">No. Telp</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="telp" class="form-control" placeholder="Masukkan No. Telp">
+                        <input type="text" name="telp" class="form-control" placeholder="Masukkan No. Telp" required>
                       </div>
                   </div>
 
@@ -42,7 +42,7 @@
                       <label class="col-sm-2 control-label">Alamat</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat Mekanik">
+                        <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat Mekanik" required>
                       </div>
                   </div>
                   

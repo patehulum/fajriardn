@@ -24,6 +24,8 @@
 				array('db' => 'id_customer', 'dt' => 'id_customer'),
 		        array('db' => 'nama_customer', 'dt' => 'nama_customer'),
 		        array('db' => 'no_plat', 'dt' => 'no_plat'),
+				array('db' => 'jenis_kendaraan', 'dt' => 'jenis_kendaraan'),
+				array('db' => 'th_kendaraan', 'dt' => 'th_kendaraan'),
 		        array('db' => 'alamat', 'dt' => 'alamat'),
 		        array('db' => 'handphone', 'dt' => 'handphone'),
 		        //untuk menampilkan aksi(edit/delete dengan parameter kode mekanik)

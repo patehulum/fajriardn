@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Skripsi Fajri</title>
+  <title>Bengkel | Skripsi Fajri</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -183,7 +183,7 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <a href="https://adminlte.io"><b>AdminLTE</b> V2</a>
+      <b>ZICSPEED</b>
     </div>
     <strong>FAJRI ARDIYAN | Sistem Informasi Bengkel Motor Di Zicspeed</strong>
   </footer>

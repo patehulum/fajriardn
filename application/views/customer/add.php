@@ -4,7 +4,7 @@
 
           <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Form Tambah Master Barang</h3>
+                <h3 class="box-title">Form Tambah Data Customer</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -18,7 +18,7 @@
                       <label class="col-sm-2 control-label">Nama Customer</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="nama_customer" class="form-control" placeholder="Masukkan nama mekanik">
+                        <input type="text" name="nama_customer" class="form-control" placeholder="Masukkan nama mekanik" required>
                       </div>
                   </div>
 
@@ -26,7 +26,23 @@
                       <label class="col-sm-2 control-label">No. Plat Kendaraan</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="no_plat" class="form-control" placeholder="Masukkan Tempat, tanggal lahir">
+                        <input type="text" name="no_plat" class="form-control" placeholder="Nomer Kendaraan" required>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Jenis Kendaraan</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" name="jenis_kendaraan" class="form-control" placeholder="Masukkan Jenis Kendaraan" required>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Tahun Kendaraan</label>
+
+                      <div class="col-sm-9">
+                        <input type="text" name="th_kendaraan" class="form-control" placeholder="Masukkan Tahun Kendaraan" required>
                       </div>
                   </div>
 
@@ -34,7 +50,7 @@
                       <label class="col-sm-2 control-label">Alamat</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="alamat" class="form-control" placeholder="Masukkan Tempat, tanggal lahir">
+                        <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat" required>
                       </div>
                   </div>
 
@@ -42,7 +58,7 @@
                       <label class="col-sm-2 control-label">No. Handphone</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="handphone" class="form-control" placeholder="Masukkan Tempat, tanggal lahir">
+                        <input type="text" name="handphone" class="form-control" placeholder="Masukkan Nomer Handphone" required>
                       </div>
                   </div>
 

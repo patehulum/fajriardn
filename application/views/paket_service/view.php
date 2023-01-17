@@ -4,26 +4,25 @@
 
           <div class="box box-primary">
             <div class="box-header  with-border">
-              <h3 class="box-title">Data Table Customer</h3>
+              <h3 class="box-title">Data Paket Service</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
             <!-- button add -->
             <?php
-                echo anchor('cust/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
+                echo anchor('paket_service/add', '<button class="btn bg-navy btn-flat margin">Tambah Data</button>');
             ?>
 
               <table id="mytable" class="table table-striped table-bordered table-hover table-full-width dataTable" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>NAMA CUSTOMER</th>
-                        <th>No. PLAT KENDARAAN</th>
-                        <th>Jenis Kendaraan</th>
-                        <th>Th Kendaraan</th>
-                        <th>Alamat</th>
-                        <th>No. Handphone</th>
+                        <th>ID PAKET SERVICE</th>
+                        <th>NAMA PAKET SERVICE</th>
+                        <th>HARGA PAKET SERVICE</th>
+                        <!-- <th>No. TELP</th>
+                        <th>ALAMAT</th> -->
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -46,7 +45,7 @@
 <script>
         $(document).ready(function() {
             var t = $('#mytable').DataTable( {
-                "ajax": '<?php echo site_url('cust/data'); ?>',
+                "ajax": '<?php echo site_url('paket_service/data'); ?>',
                 "order": [[ 1, 'asc' ]],
                 "columns": [
                     {
@@ -55,34 +54,28 @@
                         class: 'text-center',
                         orderable: false,
                     },
+                    // { 
+                    //     "data": "foto",
+                    //     "class": "text-center"
+                    // },
                     { 
-                        data: 'nama_customer',
+                        data: 'id_paket_service',
                     },
                     {
-                        data: "no_plat",
+                        data: "nama_paket_service",
                         width: '150px',
                         class: 'text-center',
                     },
                     {
-                        data: "jenis_kendaraan",
+                        data: "harga_paket_service",
                         width: '150px',
-                        class: 'text-center',
+                        class: 'text-center'
                     },
-                    {
-                        data: "th_kendaraan",
-                        width: '150px',
-                        class: 'text-center',
-                    },
-                    {
-                        data: "alamat",
-                        width: '150px',
-                        class: 'text-center',
-                    },
-                    {
-                        data: "handphone",
-                        width: '150px',
-                        class: 'text-center',
-                    },
+                    // {
+                    //     data: "alamat",
+                    //     width: '150px',
+                    //     class: 'text-center',
+                    // },
                     { 
                         data: 'aksi',
                         width: '80px',

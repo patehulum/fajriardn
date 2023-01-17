@@ -1,0 +1,29 @@
+use case :
+- Admin Bengkel (kelola data gudang, transaksi (jual sparepart & service), kelola data mekanik)
+- owner (lihat data)
+
+Menu na :
++ Barang
+- crud barang (id, kode_barang, nama_barang, jumlah)
+- list barang
+
+
++ Mekanik
+- crud mekanik
+- list mekanik
+
++ Transaksi
+- List transaksi
+- crud transaksi
+
+
+TAMBAH DATA
+Barang
+data service
+list mekanik
+keuangan
+customer
+
+ISSUE
+masih bisa di isi kosong (solved)
+paket service
