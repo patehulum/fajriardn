@@ -19,7 +19,7 @@
                         <th>NAMA BARANG</th>
                         <th>Tanggal IN</th>
                         <th>QTY AWAL</th>
-                        <th>QTY OUT</th>
+                        <th>QTY IN</th>
                         <th>STOCK</th>
                     </tr>
                 </thead>

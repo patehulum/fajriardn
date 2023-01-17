@@ -18,7 +18,7 @@
                       <label class="col-sm-2 control-label">Nama Customer</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="nama_customer" class="form-control" placeholder="Masukkan nama mekanik" required>
+                        <input type="text" name="nama_customer" class="form-control" placeholder="Masukkan Nama Customer" required>
                       </div>
                   </div>
 
@@ -26,7 +26,7 @@
                       <label class="col-sm-2 control-label">No. Plat Kendaraan</label>
 
                       <div class="col-sm-9">
-                        <input type="text" name="no_plat" class="form-control" placeholder="Nomer Kendaraan" required>
+                        <input type="text" name="no_plat" class="form-control" placeholder="Nomer Plat Kendaraan" required>
                       </div>
                   </div>
 

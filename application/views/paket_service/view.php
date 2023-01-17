@@ -18,7 +18,7 @@
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>ID PAKET SERVICE</th>
+                        <!-- <th>ID PAKET SERVICE</th> -->
                         <th>NAMA PAKET SERVICE</th>
                         <th>HARGA PAKET SERVICE</th>
                         <!-- <th>No. TELP</th>
@@ -50,7 +50,7 @@
                 "columns": [
                     {
                         data: null,
-                        width: '50px',
+                        width: '5px',
                         class: 'text-center',
                         orderable: false,
                     },
@@ -58,9 +58,9 @@
                     //     "data": "foto",
                     //     "class": "text-center"
                     // },
-                    { 
-                        data: 'id_paket_service',
-                    },
+                    // { 
+                    //     data: 'id_paket_service',
+                    // },
                     {
                         data: "nama_paket_service",
                         width: '150px',

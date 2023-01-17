@@ -1,5 +1,5 @@
 <?php	
-	class gaji_mekanik extends CI_Controller
+	class Gaji_mekanik extends CI_Controller
 	{
 		function __construct()
 		{
