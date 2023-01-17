@@ -46,22 +46,6 @@
                         <input type="text" name="kd_service" class="form-control" placeholder="Masukkan kode jasa service">
                       </div>
                   </div> -->
-
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label">Keterangan Jasa Service</label>
-
-                      <div class="col-sm-9">
-                        <textarea rows="10" cols="30" name="keterangan" class="form-control" placeholder="keterangan jasa service"></textarea>
-                      </div>
-                  </div>
-                  
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label">Biaya Jasa Service</label>
-
-                      <div class="col-sm-9">
-                        <input type="text" name="biaya_service" class="form-control" placeholder="Masukkan biaya jasa service">
-                      </div>
-                  </div>
                   
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Nama Mekanik</label>
@@ -77,20 +61,38 @@
                       <label class="col-sm-2 control-label">Jenis Paket Service</label>
 
                       <div class="col-sm-9">
-                        <?php
-                          echo cmb_dinamis('id_paket_service', 'tbl_paket_service', 'nama_paket_service', 'id_paket_service');
-                        ?>
+                        <select class="form-control" name="id_paket_service" id="category" required>
+                          <?php $query = $this->db->get('tbl_paket_service'); ?>
+                          <option value="">No Selected</option>
+                          <?php foreach($query->result() as $row):?>
+                          <option value="<?php echo $row->id_paket_service; ?>"><?php echo $row->nama_paket_service; ?></option>
+                          <?php endforeach;?>
+                        </select>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Biaya Jasa Service</label>
+
+                      <div class="col-sm-9">
+                        <div id="stock"></div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Keterangan Jasa Service</label>
+
+                      <div class="col-sm-9">
+                        <textarea rows="10" cols="30" name="keterangan" class="form-control" placeholder="keterangan jasa service"></textarea>
                       </div>
                   </div>
 
                   <div class="form-group rec-element">
-                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Barang<span
-                              class="required">*</span>
-                      </label>
-                      <div class="col-md-5 col-sm-5 col-xs-12">
-                        <input type="text" name="kd_barang[]" id="kd_barang1" alt="1" required="required" class="form-control col-md-7 col-xs-12" onchange="getqty(this)">
+                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Barang</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" name="kd_barang[]" id="kd_barang1" alt="1" class="form-control col-md-7 col-xs-12" onchange="getqty(this)" placeholder="Masukkan kode barang">
                       </div>
-                      
+
                       <!-- <label class="control-label col-md-1 col-sm-1 col-xs-12" for="first-name">Stock<span
                               class="required">*</span>
                       </label>
@@ -100,11 +102,9 @@
                   </div>
 
                   <div class="form-group rec-element">
-                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Jumlah Barang<span
-                        class="required">*</span>
-                      </label>
+                      <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Jumlah Barang</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" name="qty[]" id="qty1" alt="1" required="required" class="form-control col-md-7 col-xs-12">
+                        <input type="text" name="qty[]" id="qty1" alt="1" class="form-control col-md-7 col-xs-12" placeholder="Masukkan jumlah barang">
                       </div>
                   </div>
                   
@@ -121,53 +121,6 @@
                           <button type="submit" class="btn btn-success">Simpan</button>
                       </div>
                   </div>
-
-                  <!-- <div class="form-group">
-                      <label class="col-sm-2 control-label">Nama Barang</label>
-
-                      <div class="col-sm-9">
-                        <input type="text" name="nama_barang" class="form-control" placeholder="Masukkan Nama Barang">
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label">Harga Barang</label>
-
-                      <div class="col-sm-9">
-                        <input type="text" name="harga_barang" class="form-control" placeholder="Masukkan Harga Barang">
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label">Harga Jual</label>
-
-                      <div class="col-sm-9">
-                        <input type="text" name="harga_jual" class="form-control" placeholder="Masukkan Harga Jual Barang">
-                      </div>
-                  </div>
-                  
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label">Gambar Barang</label>
-
-                      <div class="col-sm-5">
-                        <input type="file" name="userfile">
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                      <label class="col-sm-2 control-label"></label>
-
-                      <div class="col-sm-1">
-                        <button type="submit" name="submit" class="btn btn-primary btn-flat">Simpan</button>
-                      </div>
-
-                      <div class="col-sm-1">
-                        <?php
-                          echo anchor('master_barang', 'Kembali', array('class'=>'btn btn-danger btn-flat'));
-                        ?>
-                      </div>
-                  </div> -->
-
                 </div>
                 <!-- /.box-body -->
             </form>
@@ -189,7 +142,7 @@
                 '<div class="form-group">' +
                   '<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Barang ' + i + ' <span class="required">*</span>' +
                   '</label>' +
-                  '<div class="col-md-5 col-sm-5 col-xs-12">' +
+                  '<div class="col-md-9 col-sm-9 col-xs-12">' +
                   '<div>' +
                   '<input type="text" name="kd_barang[]" id="kd_barang'+i+'" alt="' +i+'" required="required" class="form-control">' +
                   '</div>' +
@@ -236,6 +189,22 @@
 </script>
 
 <script>
+  // function getqty(obj)
+  $("#category").change(function ()  
+  {
+    var end = $(this).val();
+      $.ajax({
+        type:'POST',
+        url:"<?php echo site_url('service/get_price');?>",
+        data:{'id':end},
+        success : function(html) {
+          $("#stock").html(html);
+        }
+      });
+  });
+</script>
+
+<!-- <script>
 function getqty(obj) 
   {
     var id = $(obj).val();
@@ -250,4 +219,4 @@ function getqty(obj)
             }
         });
   }
-</script>
+</script> -->

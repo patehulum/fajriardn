@@ -70,9 +70,29 @@
 				redirect('service');
 			} else {
                 $data_id['hellow'] = date('dmy-his') ;
-                // var_dump($data_id);
+
+				// $query = $this->db->get('tbl_paket_service');
+				// $paket_service = $query->result();
+				// $paket_service = $query;
+
+                // var_dump($paket_service);
 				$this->template->load('template', 'service/add', $data_id);
 			}
+		}
+
+		function get_price()
+		{
+			$id = $this->input->post('id',true);
+			$data	= $this->db->get_where('tbl_paket_service', array('id_paket_service' => $id))->row();
+			// var_dump($data->kuantitas);
+			if ($data){
+				$biaya_service = $data->harga_paket_service;
+				echo "<input type='text' name='biaya_service' value='$biaya_service' class='form-control col-md-7 col-xs-12'>";
+			}
+			else{
+				echo "<input type='text' name='biaya_service' value='Kode barang tidak ditemukan' class='form-control col-md-7 col-xs-12' style='color:red'>";
+			}
+			// exit;
 		}
         
         public function simpan()
@@ -84,11 +104,13 @@
 			$id_mekanikna = $this->input->post('id_mekanik');
 			$nama_barangna = $this->input->post('kd_barang');
 
-			$this->db->select('*');
-			$this->db->from('tbl_master_barang');
-			$this->db->where('kd_barang',"000");
-			$query = $this->db->get();
-			$barangnamana = $query->row()->nama_barang;
+			// $this->db->select('*');
+			// $this->db->from('tbl_master_barang');
+			// $this->db->where('kd_barang',"000");
+			// $query = $this->db->get();
+
+			// $barangnamana = $query->row()->nama_barang;
+			$barangnamana = "Biaya jasa service";
 			
 
 			$data = array(
